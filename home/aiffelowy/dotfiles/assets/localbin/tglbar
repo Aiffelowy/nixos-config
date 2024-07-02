@@ -1,0 +1,16 @@
+#!/bin/sh
+# Toggles eww bar and resizes bspwm padding.
+
+LOCK_FILE="$HOME/.cache/bar.lck"
+EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/"
+
+if [[ ! -f "$LOCK_FILE" ]]; then
+    touch "$LOCK_FILE"
+    ${EWW_BIN} close bar;
+    bspc config bottom_padding 0
+else
+    rm "$LOCK_FILE"
+    bspc config bottom_padding 48
+
+    ${EWW_BIN} open bar && xdo lower -N eww-bar
+fi

@@ -1,8 +1,8 @@
 let 
   	homedir = "/home/aiffelowy";
-		localbin = "${homedir}/.local/bin";
-		ewwscripts = "${homedir}/.config/eww/scripts";
-		sxhkdscripts = "${homedir}/.config/sxhkd/scripts";
+		localbin = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/localbin";
+		ewwscripts = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts";
+		sxhkdscripts = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/sxhkd";
 in
 {
   services.sxhkd = {

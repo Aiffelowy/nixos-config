@@ -1,6 +1,3 @@
-let
-  homedir = "/home/aiffelowy";
-in
 {
   services.dunst = {
 		enable = true;
@@ -52,7 +49,7 @@ in
 				mouse_right_click = "close_all";
 			};
 			songArtLogger = {
-				script = "${homedir}/.config/dunst/scripts/songArtLogger.sh";
+				script = "~/.config/nixos/home/aiffelowy/dotfiles/assets/dunst/scripts/songArtLogger.sh";
 			};
 			urgency_low = {
 				timeout = 6;

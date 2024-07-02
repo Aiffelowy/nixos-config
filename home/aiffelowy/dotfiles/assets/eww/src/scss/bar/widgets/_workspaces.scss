@@ -1,0 +1,29 @@
+.ws {
+	font-size: 1.1em;
+	font-family: "Sarasa Mono CL Nerd Font";
+	margin: .5em .5em .5em;
+	padding: .25em .5em;
+	border-radius: 10px;
+	// border: 2px solid $lighter-background;
+	// background-color: $background-secondary;
+
+	.a, .a1, .a2, .a3, .a4, .a5, .a6,
+	.a11, .a22, .a33, .a44, .a55, .a66 {
+		margin: .5em;
+	}
+
+	/* Unoccupied */
+	.a {
+		color: lighten(#32393b, 5);
+	}
+
+	/* Occupied */
+	.a1, .a2, .a3, .a4, .a5, .a6 {
+		color: #bfc9db;
+	}
+
+	/* Focused */
+	.a11, .a22, .a33, .a44, .a55, .a66 {
+		color: #b7b8b8;
+	}
+}

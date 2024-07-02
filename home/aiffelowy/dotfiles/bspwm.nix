@@ -1,6 +1,6 @@
 let
   homedir = "/home/aiffelowy";
-	bspwmdir = "${homedir}/.config/bspwm";
+	bspwmdir = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/bspwm";
 	wallpaper = "${bspwmdir}/assets/wallpaper.png";
 in
 {
@@ -33,8 +33,8 @@ in
 		startupPrograms = [
 			"sxhkd"
 			"picom"
-			"${homedir}/.config/bspwm/scripts/idle.sh"
-			"eww"
+			"${bspwmdir}/scripts/idle.sh"
+			"eww --config ${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww daemon"
 			"${bspwmdir}/scripts/ewwFullscreenFix.sh"
 			"${bspwmdir}/scripts/persistentQuickUtilities.sh"
 			"exec mpd"

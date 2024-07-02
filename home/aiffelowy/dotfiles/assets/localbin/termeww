@@ -1,0 +1,7 @@
+#!/bin/sh
+
+EWW_PATH = $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts
+
+[[ -f "$HOME/.cache/eww-info-center.lock" ]] && sh $EWW_PATH/openInfoCenter.sh &
+[[ -f "$HOME/.cache/eww-control-center.lock" ]] && sh $EWW_PATH/openControlCenter.sh &
+[[ -f "$HOME/.cache/eww-notification-center.lock" ]] && sh $EWW_PATH/openNotificationCenter.sh &
