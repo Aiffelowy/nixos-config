@@ -36,6 +36,11 @@
 					pkgs = nixpkgs.legacyPackages.${system};
 					modules = [ ./home/aiffelowy/home.nix ];
 				};
+
+				six-oh = home-manager.lib.homeManagerConfiguration {
+					pkgs = nixpkgs.legacyPackages.${system};
+					modules = [ ./home/six-oh/home.nix ];
+				};
 			};
 		};
 

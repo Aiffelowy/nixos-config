@@ -9,7 +9,7 @@
 			shellAliases = {
 			  rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos/";
 				rebuild-home = "home-manager switch --flake ~/.config/nixos/";
-				edit-config = "~/.config/nixos/hosts/$(hostname)/configuration.nix";
+				edit-config = "nvim ~/.config/nixos/hosts/$(hostname)/configuration.nix";
 				edit-home = "nvim ~/.config/nixos/home/$(whoami)/home.nix";
 			};
 		};
