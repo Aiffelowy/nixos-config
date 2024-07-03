@@ -7,6 +7,9 @@
 		
 		packages = with pkgs; [
 			tmux
+			screen
+			jdk21_headless
+			htop
 		];
 	};
 	

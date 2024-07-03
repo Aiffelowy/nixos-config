@@ -72,6 +72,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 25565 ];
+    allowedUDPPorts = [ 25565 ];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
