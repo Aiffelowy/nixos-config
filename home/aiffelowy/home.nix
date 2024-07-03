@@ -55,6 +55,7 @@
 				gnumake
 				libcanberra-gtk3
 				krita
+        iwgtk
 			];
 		};
 
@@ -70,4 +71,8 @@
 			#	};
 			};
 	};
+
+  gtk = {
+    cursorTheme = pkgs.phinger-cursors;
+  };
 }

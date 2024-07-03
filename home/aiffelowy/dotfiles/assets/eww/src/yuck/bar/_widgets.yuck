@@ -4,7 +4,7 @@
 		:space-evenly "false"
 		:halign "center"
 		(button :class "launcher-btn"
-				:onclick "$HOME/.local/bin/appmnu"
+				:onclick "$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/appmnu"
 				""
 		)
 	)

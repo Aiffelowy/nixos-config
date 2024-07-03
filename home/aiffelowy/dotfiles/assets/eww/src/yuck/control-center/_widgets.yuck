@@ -41,7 +41,7 @@
 					)
 				)
 				(box :class "system-btn" :halign "end" :orientation "h" :space-evenly "false"
-					(button :class "exit-btn" :onclick "sh $HOME/.local/bin/lck &" "")
+					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck &" "")
 					(button :class "lock-btn" :onclick "sh ./scripts/openExitScreen.sh" "")
 				)
 			)

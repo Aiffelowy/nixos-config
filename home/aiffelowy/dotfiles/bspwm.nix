@@ -28,6 +28,9 @@ in
 			"Viewnoir" = {
 				state = "floating";
 			};
+      "iwgtk" = {
+        state = "floating"
+      };
 		};
 		
 		startupPrograms = [
