@@ -39,7 +39,7 @@
 					:value {battery_capacity}
 				)
 				(label :class "battery-label"
-					:text {bat ? "${battery_capacity}%" : ""}
+					:text {bat ? "${battery_capacity}%" : "󱐋"}
 				)
 			)
 		)
@@ -65,6 +65,18 @@
 	)
 )
 
+(defwidget temperature []
+  (box :class "temperature"
+    :orientation "h"
+    :space-evenly "false"
+    :tooltip temp
+    (label :class "temperature-label"
+      :text {temp_icon}
+      :style { temp_icon == " " ? "color: #FF6962" : ""}
+    )
+  )
+)
+
 ;; BAR IS SEPARATED INTO THREE PARTS: TOP, CENTER AND BOTTOM
 ;; TOP WIDGETS
 (defwidget top []
@@ -81,6 +93,8 @@
 (defwidget bottom []
 	(box :orientation "h" :space-evenly "false" :halign "end"
 		(action-center)
+		(separator :text "‏ ‏")
+    (temperature)
 		(separator :text "‏ ‏ ‏")
 		(battery)
 		(separator :text "‏ ‏ ‏")

@@ -1,7 +1,8 @@
 {pkgs, ...}: {
     services.			picom = {
 				enable = true;
-				package = pkgs.picom-pijulius;
+				#package = pkgs.picom-pijulius;
+        package = pkgs.picom;
 
 				backend = "glx";
 				shadow = true;

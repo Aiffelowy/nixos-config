@@ -27,6 +27,7 @@
     settings = {
       Settings = {
         AutoConnect = true;
+        UseDefaultInterface = true;
       };
     };
   };
@@ -43,7 +44,26 @@
   };
 
   # Enable audio
-  hardware.pulseaudio.enable = true;
+  hardware = {
+    pulseaudio.enable = true;
+    opengl.enable = true;
+
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.finegrained = true;
+      open = false;
+      nvidiaSettings = true;
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        amdgpuBusId = "PCI:4:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SSID=$(nmcli -t -f name,device c show --active | grep wlp2s0 | cut -d\: -f1)
+SSID=$(nmcli -t -f name,device c show --active | grep wlan0 | cut -d\: -f1)
 
 case $1 in
 	"icon")

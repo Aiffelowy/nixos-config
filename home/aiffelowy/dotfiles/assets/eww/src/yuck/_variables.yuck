@@ -109,3 +109,11 @@
 	"./scripts/dashActions.sh amstat")
 (defpoll uptime :interval "30s"
 	"./scripts/getUptime.sh")
+(defpoll perf_mode :interval "1s"
+  "asusctl profile --profile-get | awk '{print $4}'")
+(defpoll perf_icon :interval "1s"
+  "./scripts/getPerfIcon.sh")
+(defpoll temp :interval "3s"
+  "./scripts/getTemp.sh temp")
+(defpoll temp_icon :interval "3s"
+  "./scripts/getTemp.sh icon")

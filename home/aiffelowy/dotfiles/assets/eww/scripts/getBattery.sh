@@ -14,7 +14,7 @@ case $1 in
 		if [[ -d /sys/class/power_supply/ACAD ]]; then
 			echo ""
 		elif [[ -d /sys/class/power_supply/BAT0 ]]; then
-			[[ $(cat /sys/class/power_supply/BAT/status) == "Discharging" ]] && echo "" || echo ""
+			[[ $(cat /sys/class/power_supply/BAT0/status) == "Discharging" ]] && echo "" || echo ""
 		else
 			echo ""
 		fi

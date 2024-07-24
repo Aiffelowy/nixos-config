@@ -17,11 +17,15 @@
 			homeDirectory = "/home/aiffelowy";
 			stateVersion = "23.11";
 			
+      sessionVariables.GTK_THEME = "Nordic-darker";
+      sessionVariables.GTK_ICON_THEME = "Nordic-darker";
+
 			packages = with pkgs; [
 				htop
 				neofetch
 				viewnior
 				xdotool
+        usbutils
 				brightnessctl
 				hsetroot
 				maim
@@ -48,7 +52,6 @@
 				spotify
 				discord
 				file
-				networkmanagerapplet
 				xprintidle
 				unzip
 				clang-tools
@@ -56,6 +59,12 @@
 				libcanberra-gtk3
 				krita
         iwgtk
+        nordic
+        prismlauncher
+        nerdfonts
+        bsp-layout
+        bc
+        godot_4
 			];
 		};
 
@@ -64,15 +73,23 @@
 		programs = {
 			git = {
 				enable = true;
-			#	extraConfig = {
-			#		credential.helper = "${
-			#			pkgs.git.override { withLibsecret = true; }
-			#		}"/bin/git-credential-libsecret;
-			#	};
+				extraConfig = {
+					credential.helper = "${
+						pkgs.git.override { withLibsecret = true; }
+					}/bin/git-credential-libsecret";
+				};
 			};
 	};
 
   gtk = {
     cursorTheme = pkgs.phinger-cursors;
+    theme = {
+      name = "Nordic-darker";
+      package = pkgs.nordic;
+    };
+
+    iconTheme = {
+      name = "Nordic-darker";
+    };
   };
 }

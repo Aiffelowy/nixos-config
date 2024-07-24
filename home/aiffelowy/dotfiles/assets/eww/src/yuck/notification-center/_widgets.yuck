@@ -40,13 +40,13 @@
 					:space-evenly "false"
 					(label :class "month-year" :text month_year)
 					(box :class "day-names" :orientation "h" :space-evenly "true"
-						(label :text "Su")
 						(label :text "Mo")
 						(label :text "Tu")
 						(label :text "We")
 						(label :text "Th")
 						(label :text "Fr")
 						(label :text "Sa")
+						(label :text "Su")
 					)
 					(calendar :class "cal" 
 						:show-details false :show-heading false :show-day-names false)

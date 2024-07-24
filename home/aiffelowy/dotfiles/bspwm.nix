@@ -29,7 +29,10 @@ in
 				state = "floating";
 			};
       "iwgtk" = {
-        state = "floating"
+        state = "floating";
+      };
+      ".blueman-manager-wrapped" = {
+        state = "floating";
       };
 		};
 		
@@ -43,7 +46,7 @@ in
 			"exec mpd"
 			"exec mpDris2"
 			"xdo lower -a \"Eww - bar\""
-			"eww open bar"
+			"eww --config ${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww open bar"
 
 		];
 

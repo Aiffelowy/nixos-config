@@ -42,7 +42,7 @@
 				)
 				(box :class "system-btn" :halign "end" :orientation "h" :space-evenly "false"
 					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck &" "")
-					(button :class "lock-btn" :onclick "sh ./scripts/openExitScreen.sh" "")
+					(button :class "lock-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openExitScreen.sh" "")
 				)
 			)
 			(box :class "first-row" :orientation "v" :space-evenly "false"
@@ -69,7 +69,9 @@
 						:is_active {dnd_status == "#1c2325"} :onclick "sh ./scripts/dashActions.sh dnd"
 						:tooltip "Status: ${dnd_status == '#1c2325' ? 'On' : 'Off'}"
 					)
-					(cc_button :disabled "true")
+					(cc_button :title perf_mode :icon perf_icon
+            :onclick "asusctl profile --next"
+            :tooltip "Mode: {perf_mode}")
 				)
 			)
 			(box :class "second-row" :orientation "v"
@@ -82,7 +84,7 @@
 						:value volume
 						:orientation "h"
 						:tooltip "Volume: ${volume}%"
-						:onchange "amixer -D pulse sset Master {}%"
+						:onchange "amixer sset Master {}%"
 					)
 					(label :class "volume-text" :text "${volume}%")
 				)

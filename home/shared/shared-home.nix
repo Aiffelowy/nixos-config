@@ -3,8 +3,8 @@
     bash = {
 			enable = true;
 			initExtra = ''
-			complete -cf sudo
-			PS1="$(tput setaf 66)[$(tput setaf 2)\u$(tput setaf 3)@$(tput setaf 12)\h $(tput setaf 5)\W$(tput setaf 66)]$(tput bold)$ $(tput sgr0)"
+complete -cf sudo
+PS1="\[\e[36;2m\][\[\e[0m\]\[\e[32m\]\u\[\e[33m\]@\[\e[94m\]\h\[\e[35m\] \W\[\e[36;2m\]]\[\e[0m\]$ "
 			'';
 			shellAliases = {
 			  rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos/";
