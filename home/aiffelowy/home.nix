@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 	{
     imports = [ 
-    ../shared/shared-home.nix
     ./dotfiles/bspwm.nix
     ./dotfiles/rofi.nix
     ./dotfiles/dunst.nix
@@ -64,7 +63,24 @@
         nerdfonts
         bsp-layout
         bc
-        godot_4
+        mpv
+        go
+        rpcs3
+        ryujinx
+        cargo
+        lldb
+        eza
+        dust
+        bat
+        silicon
+
+        lua-language-server
+        rust-analyzer
+        gopls
+        delve
+        gparted
+
+        inputs.zen-browser.packages.x86_64-linux.zen-wrapper
 			];
 		};
 
@@ -79,7 +95,22 @@
 					}/bin/git-credential-libsecret";
 				};
 			};
+
+      bash = {
+        shellAliases = {
+          ls = "eza";
+          du = "dust";
+          cat = "bat";
+        };
+      };
 	};
+
+  services = {
+    home-manager.autoUpgrade = {
+      enable = true;
+      frequency = "weekly";
+    };
+  };
 
   gtk = {
     cursorTheme = pkgs.phinger-cursors;

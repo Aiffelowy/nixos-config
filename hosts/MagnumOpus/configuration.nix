@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -13,6 +13,23 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [ "--update-input" "nixpkgs" "-L" ];
+    dates = "weekly";
+  };
+
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    optimise.automatic = true;
+  };
+
 
   networking.hostName = "MagnumOpus"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -99,11 +116,17 @@
 
   #services
   services = {
-    nginx = {
+    httpd = {
       enable = true;
       user = "aiffelowy";
-      virtualHosts."moger" = {
-        root = "/home/aiffelowy/builds/no-braincells/web";
+      enablePHP = true;
+      virtualHosts.localhost = {
+        extraConfig = ''
+        <Directory /home/aiffelowy/builds/no-braincells/web>
+          DirectoryIndex index.php
+          Require all granted
+        </Directory>
+        '';
         };
     };
     xserver = {
@@ -137,7 +160,10 @@
 
     asusd = {
       enable = true;
+      enableUserService = true;
     };
+
+    supergfxd.enable = true;
 
     blueman.enable = true;
 
@@ -151,22 +177,32 @@
     };
   };
 
-  systemd.services.nginx.serviceConfig.ProtectHome = "read-only";
+  systemd.services.httpd.serviceConfig.ProtectHome = "read-only";
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     home-manager
     wget
-    neovim
     gcc
     clang
     asusctl
-    SDL2
+    php
   ];
 
   programs.thunar.enable = true;
   programs.steam.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    package = pkgs.unstable.neovim-unwrapped;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

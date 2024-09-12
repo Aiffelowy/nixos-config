@@ -21,7 +21,7 @@ in
 					"XF86Audio{Raise,Lower}Volume" = "amixer -q set Master 5%{+,-}";
 					"XF86AudioMute" = "${sxhkdscripts}/audioToggle.sh";
 					"XF86MonBrightness{Up,Down}" = "brightnessctl set 5%{+,-}";
-					"super + shift + s" = "maim -us \"${homedir}/.ss.png\"; ${localbin}{viewscr,upldscr} ${homedir}.ss.png";
+					"super + shift + s" = "maim -us \"${homedir}/.ss.png\"; ${localbin}/viewscr ${homedir}/.ss.png";
 					"super + {_,shift +}Tab" = "bspc node -f {prev,next}.local.!hidden.window";
 					"super + {Up, Down, Left, Right}" = "${sxhkdscripts}/bselect.sh {north, south, west, east}";
 					"super + shift + {Up, Down, Left, Right}" = "${sxhkdscripts}/bsmove.sh {north, south, west, east}";

@@ -4,6 +4,8 @@
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+		nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
 
 		home-manager = {
 			url = "github:nix-community/home-manager/release-24.05";
@@ -11,16 +13,28 @@
 		};
 	};
 
-	outputs = { nixpkgs, home-manager, ... }:
+	outputs = { nixpkgs, nixpkgs-unstable, home-manager, zen-browser, ... }@inputs:
 		let
 			system = "x86_64-linux";
+			unstable-overlay = {
+				nixpkgs.overlays = [
+					(final: prev: {
+      						unstable = import nixpkgs-unstable {
+      						inherit system;
+      						config.allowUnfree = false;
+      						};
+    					})
+  				];
+			};
 		in {
 			nixosConfigurations = {
 				MagnumOpus = nixpkgs.lib.nixosSystem {
 					inherit system;
 					modules = [
+						unstable-overlay
 						./hosts/MagnumOpus/configuration.nix
 					];
+					specialArgs = { inherit inputs; };
 				};
 
 				Bunker = nixpkgs.lib.nixosSystem {
@@ -34,12 +48,20 @@
 			homeConfigurations = {
 				aiffelowy = home-manager.lib.homeManagerConfiguration {
 					pkgs = nixpkgs.legacyPackages.${system};
-					modules = [ ./home/aiffelowy/home.nix ];
+					modules = [ 
+						./home/shared/shared-home.nix
+						./home/aiffelowy/home.nix
+					];
+					extraSpecialArgs = { inherit inputs; };
 				};
 
 				six-oh = home-manager.lib.homeManagerConfiguration {
 					pkgs = nixpkgs.legacyPackages.${system};
-					modules = [ ./home/six-oh/home.nix ];
+					modules = [
+						./home/shared/shared-home.nix
+						./home/six-oh/home.nix
+					];
+					extraSpecialArgs = { inherit inputs; };
 				};
 			};
 		};
