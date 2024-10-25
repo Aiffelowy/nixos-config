@@ -15,6 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "consoleblank=60" ];
 
   networking.hostName = "Bunker"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -24,7 +25,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = { 
+    networkmanager.enable = false;
+    enableIPv6 = false;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -63,9 +67,9 @@
     };
 
     logind = {
-      lidSwitch = "ignore";
-      lidSwitchDocked = "ignore";
-      lidSwitchExternalPower = "ignore";
+      lidSwitch = "lock";
+      lidSwitchDocked = "lock";
+      lidSwitchExternalPower = "lock";
     };
   };
 
