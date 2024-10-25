@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-    services.			picom = {
+    services.picom = {
 				enable = true;
 				#package = pkgs.picom-pijulius;
         package = pkgs.picom;
@@ -20,7 +20,7 @@
 				fade = false;
 				fadeSteps = [ 0.06 0.06 ];
 				fadeDelta = 10;
-				inactiveOpacity = 1.0;
+				inactiveOpacity = 0.92;
 				activeOpacity = 1.0;
 				vSync = true;
 				wintypes = {

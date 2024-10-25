@@ -33,7 +33,7 @@ do
 	ridle=$(( idle - lastsi ))	
 	if [[ $ridle -gt $normal_ms ]]
 	then
-		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck&
+		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck
 	fi;
 	sleep 1
 done;

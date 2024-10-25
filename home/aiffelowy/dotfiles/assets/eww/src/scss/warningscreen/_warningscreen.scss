@@ -1,0 +1,33 @@
+.warning-screen {
+  .inner {
+    background-color: $darker-background;
+    border-radius: 5px;
+    padding: 50px 100px;
+  }
+
+  .warning-label {
+    color: $foreground-primary;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .confirm-btn {
+    background-color: $darker-background;
+    color: $yellow;
+    border: 6px solid $background-primary;
+    border-radius: 10px;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-weight: bold;
+    padding: .25em;
+    
+  }
+
+  .confirm-btn {
+    &:hover {
+      color: $yellow;
+      border-color: $yellow;
+    }
+  }
+}

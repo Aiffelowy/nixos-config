@@ -30,4 +30,23 @@ case $1 in
             echo "100"
 		fi
 		;;
+
+  "style")
+		if [[ "$FAKE_BATTERY" -gt 0 ]]; then
+      echo "high"
+    elif [[ $(cat /sys/class/power_supply/BAT0/status) == "Charging" ]]; then
+      echo "charging"
+		elif [[ -f /sys/class/power_supply/BAT0/capacity ]]; then
+			CAP=$(cat /sys/class/power_supply/BAT0/capacity)
+
+      if [[ $CAP -lt 20 ]]; then
+        echo "low"
+      elif [[ $CAP -lt 40 ]]; then
+        echo "mid"
+      else
+        echo "high"
+      fi
+		fi
+		;;
+
 esac

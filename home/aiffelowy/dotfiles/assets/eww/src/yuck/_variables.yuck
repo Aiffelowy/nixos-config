@@ -23,6 +23,8 @@
 	"brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 (defpoll battery_capacity :interval "1s" :initial 0
 	"./scripts/getBattery.sh capacity")
+(defpoll bat_style :interval "1s"
+  "./scripts/getBattery.sh style")
 
 ;; MUSIC PLAYER VARS
 (defpoll art :interval "1s"
@@ -81,10 +83,18 @@
 	"./scripts/getNetwork.sh name")
 (defpoll network_name_truncated :interval "1s"
 	"./scripts/getNetwork.sh trname")
+(defpoll watt_usage :interval "3s"
+  "./scripts/getPower.sh power")
+(defpoll power_icon :interval "1s"
+  "./scripts/getPower.sh icon")
 (defpoll redshift_status :interval "1s"
 	"./scripts/getRedshift.sh color")
 (defpoll dnd_status :interval "1s"
 	"./scripts/dashActions.sh dndstat")
+(defpoll fan1_speed :interval "1s"
+  "./scripts/getFan.sh 1")
+(defpoll fan2_speed :interval "1s"
+  "./scripts/getFan.sh 2")
 
 ;; NOTIFICATION CENTER/POPUP VARS
 (defpoll dunst_history :interval "250ms" :run-while noticenter

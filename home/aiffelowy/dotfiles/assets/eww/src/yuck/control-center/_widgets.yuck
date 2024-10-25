@@ -41,8 +41,8 @@
 					)
 				)
 				(box :class "system-btn" :halign "end" :orientation "h" :space-evenly "false"
-					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck &" "")
-					(button :class "lock-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openExitScreen.sh" "")
+					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck &" :timeout "10s" "")
+					(button :class "lock-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openExitScreen.sh" :timeout "10s" "")
 				)
 			)
 			(box :class "first-row" :orientation "v" :space-evenly "false"
@@ -51,7 +51,7 @@
 						:is_active {network_name != "Wi-Fi"} :onclick "iwgtk &"
 						:tooltip "Connected to ${network_name}"
 					)
-					(cc_button :title {bluetooth_status != "Off" ? hostname : "Bluetooth"} :icon bluetooth_icon
+					(cc_button :title {bluetooth_status != "Off" ? bluetooth_status : "Bluetooth"} :icon bluetooth_icon
 						:is_active {bluetooth_status != "Off"} :onclick "blueman-manager &"
 						:tooltip "Status: ${bluetooth_status}" :disabled {bluetooth_supported == "false"}
 					)

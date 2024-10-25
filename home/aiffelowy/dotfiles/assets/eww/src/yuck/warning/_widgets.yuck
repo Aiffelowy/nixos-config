@@ -1,0 +1,15 @@
+(defwidget warning []
+  (revealer :reveal wscreen :duration "500ms" :transition "crossfade"
+    (box :orientation "h" :space-evenly "true"
+      (box :class "warning-screen" :orientation "h" :space-evenly "false" :halign "center" :valign "center"
+        (box :class "inner" :orientation "v" :space-evenly "true"
+          (label :class "warning-label" :text "${warning}")
+          (button :class "confirm-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openWarningScreen.sh" :timeout "5s" "OK" )
+        )
+      )
+    )
+  )
+)
+
+(defvar wscreen false)
+(defvar warning "")

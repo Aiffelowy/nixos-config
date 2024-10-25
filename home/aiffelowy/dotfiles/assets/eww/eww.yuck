@@ -21,3 +21,9 @@
 
 (include "./src/yuck/notification-popup/_widgets.yuck")
 (include "./src/yuck/notification-popup/_windows.yuck")
+
+(include "./src/yuck/statscreen/_widgets.yuck")
+(include "./src/yuck/statscreen/_windows.yuck")
+
+(include "./src/yuck/warning/_widgets.yuck")
+(include "./src/yuck/warning/_window.yuck")

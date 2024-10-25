@@ -18,9 +18,9 @@ in
 					"super + shift + b" = "${localbin}/tglbar";
 					"super + Escape" = "${ewwscripts}/openExitScreen.sh";
 					"~Escape" = "[[ -f \"${homedir}/.cache/eww-escreen.lock\" ]] && ${ewwscripts}/openExitScreen.sh";
-					"XF86Audio{Raise,Lower}Volume" = "amixer -q set Master 5%{+,-}";
+					"XF86Audio{Raise,Lower}Volume" = "${localbin}/chng-volume {+,-}";
 					"XF86AudioMute" = "${sxhkdscripts}/audioToggle.sh";
-					"XF86MonBrightness{Up,Down}" = "brightnessctl set 5%{+,-}";
+					"XF86MonBrightness{Up,Down}" = "${localbin}/chng-brightness {+,-}";
 					"super + shift + s" = "maim -us \"${homedir}/.ss.png\"; ${localbin}/viewscr ${homedir}/.ss.png";
 					"super + {_,shift +}Tab" = "bspc node -f {prev,next}.local.!hidden.window";
 					"super + {Up, Down, Left, Right}" = "${sxhkdscripts}/bselect.sh {north, south, west, east}";
@@ -30,6 +30,7 @@ in
 					"super + {_,shift + }{1-5}" = "bspc {desktop -f, node -d} '^{1-5}'";
 					"super + {t,shift + t,space,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
 					"super + ctrl + r" = "pkill -USR1 sxhkd; notify-send \"sxhkd\" \"Restarted Simple X hotkey daemon\"";
+          "XF86Launch1" = "asusctl --next-kbd-bright";
 				};
 			};
 

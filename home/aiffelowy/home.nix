@@ -73,14 +73,19 @@
         dust
         bat
         silicon
+        r2modman
+        gparted
+        p7zip
+        python312
 
         lua-language-server
         rust-analyzer
         gopls
         delve
-        gparted
-
-        inputs.zen-browser.packages.x86_64-linux.zen-wrapper
+        nodePackages_latest.vscode-css-languageserver-bin
+        nodePackages_latest.vscode-html-languageserver-bin
+        nodePackages_latest.typescript-language-server
+        pyright
 			];
 		};
 

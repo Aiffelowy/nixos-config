@@ -1,0 +1,69 @@
+(defwidget statscreen []
+  (box :class "statscreen-window" :space-evenly "false" :orientation "v"
+    (eventbox :onclick "sh ./scripts/openStatScreen.sh &"
+      (box :class "statscreen-spacer" :style {stscrn ? "padding-bottom: 0em;" : "padding-bottom: calc(43em - 1px);"})
+    )
+    (box :class "statscreen" :orientation "v" :space-evenly "false"
+      (box :class "cpu-stat" :orientation "h" :space-evenly "false"
+        (label :class "cpu-icon" :text "memory")
+        (scale :min 0
+          :max 101
+          :value {EWW_CPU.avg}
+          :orientation "h"
+          :tooltip "CPU: ${round(EWW_CPU.avg, 0)}%"
+        )
+        (label :class "cpu-text" :text "${round(EWW_CPU.avg, 0)}%")
+      )
+      (box :class "ram-stat" :orientation "h" :space-evenly "false"
+        (label :class "ram-icon" :text "\\uefc5")
+        (scale :min 0
+          :max 101
+          :value {round(EWW_RAM.used_mem / EWW_RAM.total_mem, 2)*100}
+          :orientation "h"
+          :tooltip "RAM: ${round(EWW_RAM.used_mem / 1073741824, 1)}GB/${round(EWW_RAM.total_mem / 1073741824, 1)}GB"
+        )
+        (label :class "ram-text" :text "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 2)*100}%")
+      )
+
+      (box :class "disk-stat" :orientation "h" :space-evenly "false"
+        (label :class "disk-icon" :text "storage")
+        (scale :min 0
+          :max 101
+          :value {(EWW_DISK["/"].used / EWW_DISK["/"].total)*100}
+          :orientation "h"
+          :tooltip "disk: ${round(EWW_DISK["/"].used / 1073741824, 1)}GB/${round(EWW_DISK["/"].total / 1073741824, 1)}GB"
+        )
+        (label :class "disk-text" :text "${round(EWW_DISK['/'].used / EWW_DISK['/'].total,1)*100}%")
+      )
+
+      (box :class "temp-stat" :orientation "h" :space-evenly "false"
+        (label :class "temp-icon" :text "device_thermostat")
+        (scale :min 0
+          :max 101
+          :value {EWW_TEMPS["ACPITZ_TEMP1"]}
+          :orientation "h"
+          :tooltip "TEMP: ${EWW_TEMPS["ACPITZ_TEMP1"]}°C"
+        )
+        (label :class "temp-text" :text "${EWW_TEMPS["ACPITZ_TEMP1"]}°C")
+      )
+      (box :class "misc-stat" :orientation "h" :space-evenly "false" :halign "center"
+        (box :class "watt-stat" :orientation "h" :space-evenly "false"
+          (label :class "watts-icon" :text "${power_icon}")
+          (label :class "watts" :text ": ${watt_usage}")
+        )
+        (box :class "fan-stat" :orientation "v" :space-evenly "false" :halign "cetner"
+          (box
+            (label :class "fan-icon" :text "\\uefa7")
+            (label :class "fans" :text ": ${fan1_speed}rpm")
+          )
+          (box
+            (label :class "fan-icon" :text "\\uefa7")
+            (label :class "fans" :text ": ${fan2_speed}rpm")
+          )
+        )
+      )
+    )
+  )
+)
+
+(defvar stscrn false)

@@ -2,9 +2,10 @@
 
 LOCK_FILE="$HOME/.cache/eww-lock.lock"
 EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+SCRIPTS="$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin"
 
 hide_unhide_windows() {
-#	while bspc node any.hidden.window -g hidden=off; do false; done && while bspc node 'any.!hidden.window' -g hidden=on; do :; done
+	while bspc node any.hidden.window -g hidden=off; do false; done && while bspc node 'any.!hidden.window' -g hidden=on; do :; done
 }
 
 lock() {
@@ -12,7 +13,8 @@ lock() {
 	${EWW_BIN} open-many lock-screen
 
 	i3lock -n -c 00000000 -t -e --pass-media-keys --pass-power-keys --pass-volume-keys --indicator --force-clock \
-		--radius 52 --modif-size=9 --modif-pos="w/2:h/2-15" \
+		--radius 52 --modif-size=9 \
+    --modif-pos="w/2:h/2-15" \
 		\
 		--time-str="%H:%M" \
 		--time-pos="w/2:h/4" \
@@ -40,7 +42,7 @@ lock() {
 		--greeter-color=96d6b0 \
 		--greeter-size=60 \
 		--greeter-font="Material Icons" \
-		--greeter-pos="w/2:h/2+285" \
+		--greeter-pos="w/2:h/2+245" \
 		\
 		--ring-color=00000000 \
 		--ringver-color=96D6B0 \
@@ -50,7 +52,7 @@ lock() {
 		--insidever-color=079A8C02 \
 		--insidewrong-color=079A8C02 \
 		--inside-color=079A8C02 \
-		--ind-pos="w/2:h-130" \
+		--ind-pos="w/2:h-505" \
 		\
 		--noinput-text="" \
 		\
@@ -61,14 +63,14 @@ lock() {
 
 finish() {
 	${EWW_BIN} close-all
-#	$HOME/.local/bin/tglbar
+	$SCRIPTS/tglbar
 	hide_unhide_windows
 	rm "$LOCK_FILE"
 }
 
 run() {
-    $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/termeww
-#	$HOME/.local/bin/tglbar
+  $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/termeww
+	$SCRIPTS/tglbar
 	hide_unhide_windows
 	lock
 }

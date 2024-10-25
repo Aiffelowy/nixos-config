@@ -120,14 +120,16 @@
       enable = true;
       user = "aiffelowy";
       enablePHP = true;
+      phpPackage = pkgs.php.withExtensions({all, ...}: with all; [ dom ]);
       virtualHosts.localhost = {
-        extraConfig = ''
-        <Directory /home/aiffelowy/builds/no-braincells/web>
-          DirectoryIndex index.php
-          Require all granted
-        </Directory>
-        '';
-        };
+        documentRoot = "/home/aiffelowy/builds/no-braincells/web";
+      };
+      extraConfig = ''
+      <Directory />
+        Require all granted
+        DirectoryIndex index.html
+      </Directory>
+      '';
     };
     xserver = {
       enable = true;
@@ -151,9 +153,12 @@
     libinput = {
         enable = true;
         touchpad = {
-	  tapping = true;
-	  middleEmulation = true;
-	  naturalScrolling = true;
+	        tapping = true;
+	        middleEmulation = true;
+	        naturalScrolling = true;
+        };
+        mouse = {
+          middleEmulation = false;
         };
       };
 
@@ -192,6 +197,8 @@
     clang
     asusctl
     php
+    ntfs3g
+    cifs-utils
   ];
 
   programs.thunar.enable = true;
@@ -204,6 +211,15 @@
     package = pkgs.unstable.neovim-unwrapped;
   };
 
+  fileSystems."/home/aiffelowy/disks/diskstation" = {
+    device = "//192.168.1.145/worek";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

@@ -1,4 +1,4 @@
 #!/bin/sh
 
 rofi -disable-history -no-lazy-grab \
--modi "run,drun,window" -show drun \
+-modi "run,drun,window" -sort -show drun \
