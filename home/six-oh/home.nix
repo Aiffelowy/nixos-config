@@ -1,4 +1,5 @@
 {config, pkgs, ...}: {
+	imports = [ ./docker/pihole.nix ];
 	home = {
 		username = "six-oh";
 		homeDirectory = "/home/six-oh";
@@ -13,5 +14,4 @@
 	};
 	
 	programs.home-manager.enable = true;
-
 }

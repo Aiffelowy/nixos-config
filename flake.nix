@@ -10,14 +10,9 @@
 			url = "github:nix-community/home-manager/release-24.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		pihole = {
-			url = "github:mindsbackyard/pihole-flake";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
-	outputs = { nixpkgs, nixpkgs-unstable, home-manager, pihole, ... }@inputs:
+	outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
 		let
 			system = "x86_64-linux";
 			unstable-overlay = {

@@ -52,7 +52,7 @@
   users.users.six-oh = {
     isNormalUser = true;
     description = "six-oh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [];
   };
 
@@ -78,11 +78,13 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 25565 ];
-    allowedUDPPorts = [ 25565 ];
+    allowedTCPPorts = [ 22 25565 5335 8080 ];
+    allowedUDPPorts = [ 25565 5335 ];
   };
 
   virtualisation.docker = {
+    autoPrune.enable = true;
+
     rootless = {
       enable = true;
       setSocketVariable = true;
@@ -90,9 +92,12 @@
 
     daemon.settings = {
       userland-proxy = false;
+      metrics-addr = "0.0.0.0:9323";
+      ipv6 = false;
     };
   };
 
+  virtualisation.oci-containers.backend = "docker";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
