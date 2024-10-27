@@ -50,7 +50,7 @@
 						./home/shared/shared-home.nix
 						./home/aiffelowy/home.nix
 					];
-					extraSpecialArgs = { inherit inputs; };
+					extraSpecialArgs = { inherit nixpkgs-unstable; };
 				};
 
 				six-oh = home-manager.lib.homeManagerConfiguration {
@@ -59,7 +59,7 @@
 						./home/shared/shared-home.nix
 						./home/six-oh/home.nix
 					];
-					extraSpecialArgs = { inherit inputs; };
+					extraSpecialArgs = { inherit nixpkgs-unstable; };
 				};
 			};
 		};

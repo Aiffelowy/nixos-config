@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, nixpkgs-unstable, ... }: {
   programs = {
     bash = {
 			enable = true;
@@ -19,7 +19,7 @@ PS1="\[\e[36;2m\][\[\e[0m\]\[\e[32m\]\u\[\e[33m\]@\[\e[94m\]\h\[\e[35m\] \W\[\e[
 			defaultEditor = true;
 			viAlias = true;
 			vimAlias = true;
-			package = inputs.nixpkgs-unstable.legacyPackages."${pkgs.stdenv.system}".neovim-unwrapped;
+			package = nixpkgs-unstable.legacyPackages."${pkgs.stdenv.system}".neovim-unwrapped;
 		};
   };
 }
