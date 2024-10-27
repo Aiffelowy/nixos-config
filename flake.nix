@@ -45,7 +45,6 @@
 					modules = [
 						./hosts/Bunker/configuration.nix
 					];
-					specialArgs = { inherit nixpkgs pihole };
 				};
 			};
 
