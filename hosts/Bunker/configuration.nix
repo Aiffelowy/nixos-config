@@ -61,8 +61,8 @@
       enable = true;
       settings = {
         PasswordAuthentication = true;
-	AllowUsers = ["six-oh"];
-	PermitRootLogin = "no";
+	      AllowUsers = ["six-oh"];
+	      PermitRootLogin = "no";
       };
     };
 

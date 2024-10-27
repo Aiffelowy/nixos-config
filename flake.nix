@@ -33,7 +33,6 @@
 						unstable-overlay
 						./hosts/MagnumOpus/configuration.nix
 					];
-					specialArgs = { inherit inputs; };
 				};
 
 				Bunker = nixpkgs.lib.nixosSystem {
