@@ -82,6 +82,18 @@
     allowedUDPPorts = [ 25565 ];
   };
 
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+
+    daemon.settings = {
+      userland-proxy = false;
+    };
+  };
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
