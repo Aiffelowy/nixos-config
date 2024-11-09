@@ -13,8 +13,8 @@
 										:summary {entry["summary"]["data"]}
 										:body {entry["body"]["data"]}
 										:icon {entry["appname"]["data"] == "Spotify" ? "../../.cache/dunst/${entry['summary']['data']}.png" :
-											entry["appname"]["data"] == "discord" ? "./assets/applications/discord.png" :
-											(entry["icon_path"]["data"] ?: "../dunst/assets/notification/fallback.png")}
+											entry["appname"]["data"] == "discord" ? "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/assets/applications/discord.png" :
+											(entry["icon_path"]["data"] ?: "$HOME/.config/nixos/home/shared/dotfiles/assets/dunst/assets/notification/fallback.png")}
 										:reveal_close_icon "false"
 										:is_ss {entry["appname"]["data"] == "Screenshot Tool" ? "true" : "false"}
 									)
@@ -24,7 +24,7 @@
 						(revealer :reveal reveal_no_notification_text :transition "crossfade"
 							(box :orientation "v" :space-evenly "false"
 								:style {reveal_no_notification_text ? "margin: 8em 0em;" : "margin: 0em 0em;"}
-								(image :style "margin-bottom: 2em;" :path "./assets/ui/wedding-bells.png")
+								(image :style "margin-bottom: 2em;" :path "/home/aiffelowy/.config/nixos/home/shared/dotfiles/assets/eww/assets/ui/wedding-bells.png")
 								(label :class "eon" 
 									:valign "center"
 									:text "No Notifications."

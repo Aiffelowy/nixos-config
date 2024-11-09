@@ -1,6 +1,5 @@
 {
   imports = [ 
-    ./bspwm.nix
     ./dunst.nix
     ./kitty.nix
     ./picom.nix

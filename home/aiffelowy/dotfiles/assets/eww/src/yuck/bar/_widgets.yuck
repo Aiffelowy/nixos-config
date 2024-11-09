@@ -4,7 +4,7 @@
 		:space-evenly "false"
 		:halign "center"
 		(button :class "launcher-btn"
-				:onclick "$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/appmnu"
+				:onclick "$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/appmnu"
 				""
 		)
 	)
@@ -12,13 +12,13 @@
 
 (defwidget workspaces []
 	(literal :content workspace :valign "center" ))
-(deflisten workspace "./scripts/getWorkspaces.sh")
+(deflisten workspace "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh")
 
 (defwidget time []
 	(box :orientation "h"
 		:class "time"
 		:halign "start"
-		(button :onclick "sh ./scripts/openInfoCenter.sh &"
+		(button :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openInfoCenter.sh &"
 			"${monthday}, ${hour}:${minute}"
 		)
 	)
@@ -52,18 +52,18 @@
 		:orientation "h"
 		:space-evenly "false"
 		(button :class "control-center-btn"
-			:onclick "sh ./scripts/openControlCenter.sh &"
+			:onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openControlCenter.sh &"
 			:tooltip "Control Center"
 			"${network_icon}  ${bluetooth_icon}  ${airplane_mode_status}"
 		)
 		(button :class "notification-center-btn"
-			:onclick "sh ./scripts/openNotificationCenter.sh &"
+			:onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openNotificationCenter.sh &"
 			:tooltip "Notification Center"
 			:style "margin: 0em .25em 0em .75em;"
 			"${dunst_count != 0 ? '' : ''}"
 		)
     (button :class "statscreen-btn"
-      :onclick "sh ./scripts/openStatScreen.sh &"
+      :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openStatScreen.sh &"
       :tooltip "StatScreen"
       :style "margin: 0em .25em 0em .35em; font-size: 25px;"
       "memory"

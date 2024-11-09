@@ -31,7 +31,7 @@ if [[ ! `pidof eww` ]]; then
 else
 	if [[ ! -f "$LOCK_FILE" ]]; then
 		touch "$LOCK_FILE"
-		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/termeww
+		$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/termeww
     run "${1}"
 	else
 		sleep 0.15 && ${EWW_BIN} update wscreen=false

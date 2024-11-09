@@ -16,7 +16,7 @@ if [[ $(playerctl -p spotify,%any,firefox,chromium,brave,mpd metadata mpris:artU
 elif [[ -n $ART_FROM_BROWSER ]]; then
 	cp $ART_FROM_BROWSER $TMP_TEMP_PATH
 else
-	cp $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/assets/ui/music-fallback.png $TMP_TEMP_PATH
+	cp $HOME/.config/nixos/home/shared/dotfiles/assets/eww/assets/ui/music-fallback.png $TMP_TEMP_PATH
 fi
 
 cp $TMP_TEMP_PATH $TMP_COVER_PATH

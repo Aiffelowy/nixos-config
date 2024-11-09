@@ -1,6 +1,6 @@
 (defwidget statscreen []
   (box :class "statscreen-window" :space-evenly "false" :orientation "v"
-    (eventbox :onclick "sh ./scripts/openStatScreen.sh &"
+    (eventbox :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openStatScreen.sh &"
       (box :class "statscreen-spacer" :style {stscrn ? "padding-bottom: 0em;" : "padding-bottom: calc(43em - 1px);"})
     )
     (box :class "statscreen" :orientation "v" :space-evenly "false"
@@ -51,7 +51,7 @@
           (label :class "watts-icon" :text "${power_icon}")
           (label :class "watts" :text ": ${watt_usage}")
         )
-        (box :class "fan-stat" :orientation "v" :space-evenly "false" :halign "cetner"
+        (box :class "fan-stat" :orientation "v" :space-evenly "false" :halign "center"
           (box
             (label :class "fan-icon" :text "\\uefa7")
             (label :class "fans" :text ": ${fan1_speed}rpm")

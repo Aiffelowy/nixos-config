@@ -28,7 +28,7 @@ workspaces() {
 	[[ "$f4" ]] && content4="◆"
 	[[ "$f5" ]] && content5="◆"
 
-	echo "(eventbox :onscroll \"sh ./scripts/dashActions.sh '{}'\" :valign \"center\" (box	:class \"ws\" :orientation \"h\"	:halign \"center\"	:valign \"center\"	 :space-evenly \"false\" :spacing \"-5\" (button :onclick \"bspc desktop -f 1\"	:class	\"a$o1$f1\"	\"$content1\") (button :onclick \"bspc desktop -f 2\"	:class \"a$o2$f2\"	 \"$content2\") (button :onclick \"bspc desktop -f 3\"	:class \"a$o3$f3\" \"$content3\") (button :onclick \"bspc desktop -f 4\"	:class \"a$o4$f4\"	\"$content4\") (button :onclick \"bspc desktop -f 5\"	:class \"a$o5$f5\" \"$content5\" )))"
+	echo "(eventbox :onscroll \"sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh '{}'\" :valign \"center\" (box	:class \"ws\" :orientation \"h\"	:halign \"center\"	:valign \"center\"	 :space-evenly \"false\" :spacing \"-5\" (button :onclick \"bspc desktop -f 1\"	:class	\"a$o1$f1\"	\"$content1\") (button :onclick \"bspc desktop -f 2\"	:class \"a$o2$f2\"	 \"$content2\") (button :onclick \"bspc desktop -f 3\"	:class \"a$o3$f3\" \"$content3\") (button :onclick \"bspc desktop -f 4\"	:class \"a$o4$f4\"	\"$content4\") (button :onclick \"bspc desktop -f 5\"	:class \"a$o5$f5\" \"$content5\" )))"
 }
 
 workspaces

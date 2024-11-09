@@ -10,7 +10,7 @@ FOCUSED_DESKTOP=$(bspc query -D -d focused --names)
 
 pre_run() {
 	if [[ -f "$HOME/.cache/eww-control-center.lock" ]]; then
-		sh "$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openControlCenter.sh"
+		sh "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openControlCenter.sh"
 	fi
 }
 

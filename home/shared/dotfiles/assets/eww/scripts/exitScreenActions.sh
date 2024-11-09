@@ -12,7 +12,7 @@ pre_run() {
 	if [[ -f "$HOME/.cache/eww-escreen.lock" ]]; then
 		${EWW_BIN} update escreen=false
 		sleep 0.8
-		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/tglbar
+		$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/tglbar
 		hide_unhide_windows
 		${EWW_BIN} close exit-screen
 		rm "$HOME/.cache/eww-escreen.lock"

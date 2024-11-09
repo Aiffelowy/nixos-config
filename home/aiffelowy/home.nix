@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 	{
-    imports = [ ./dotfiles/theme1.nix ];
+    imports = [ 
+      ./dotfiles/bspwm.nix
+      ../shared/dotfiles/theme1.nix
+    ];
 
 		nixpkgs.config.allowUnfree = true;
 

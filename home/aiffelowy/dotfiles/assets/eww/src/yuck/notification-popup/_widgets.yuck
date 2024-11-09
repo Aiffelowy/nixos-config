@@ -11,8 +11,8 @@
 								:summary {entry["summary"]["data"]}
 								:body {entry["body"]["data"]}
 								:icon {entry["appname"]["data"] == "Spotify" ? "../../.cache/dunst/${entry['summary']['data']}.png" :
-									entry["appname"]["data"] == "discord" ? "./assets/applications/discord.png" :
-									(entry["icon_path"]["data"] ?: "../dunst/assets/notification/fallback.png")}
+									entry["appname"]["data"] == "discord" ? "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/assets/applications/discord.png" :
+									(entry["icon_path"]["data"] ?: "$HOME/.config/nixos/home/shared/dotfiles/assets/dunst/assets/notification/fallback.png")}
 								:reveal_close_icon "false"
 							)
 						)

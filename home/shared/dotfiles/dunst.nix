@@ -49,7 +49,7 @@
 				mouse_right_click = "close_all";
 			};
 			songArtLogger = {
-				script = "~/.config/nixos/home/aiffelowy/dotfiles/assets/dunst/scripts/songArtLogger.sh";
+				script = "~/.config/nixos/home/shared/dotfiles/assets/dunst/scripts/songArtLogger.sh";
 			};
 			urgency_low = {
 				timeout = 6;

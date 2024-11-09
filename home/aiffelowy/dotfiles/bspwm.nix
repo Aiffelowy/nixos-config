@@ -1,6 +1,6 @@
 let
   homedir = "/home/aiffelowy";
-	bspwmdir = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/bspwm";
+	bspwmdir = "${homedir}/.config/nixos/home/shared/dotfiles/assets/bspwm";
 	wallpaper = "${bspwmdir}/assets/wallpaper.png";
 in
 {

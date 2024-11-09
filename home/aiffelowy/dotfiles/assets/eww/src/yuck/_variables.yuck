@@ -22,25 +22,25 @@
 (defpoll brightness :interval "500ms"
 	"brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 (defpoll battery_capacity :interval "1s" :initial 0
-	"./scripts/getBattery.sh capacity")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBattery.sh capacity")
 (defpoll bat_style :interval "1s"
-  "./scripts/getBattery.sh style")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBattery.sh style")
 
 ;; MUSIC PLAYER VARS
 (defpoll art :interval "1s"
 	"echo \"$HOME/.cache/eww/cover.png\"")
 (defpoll song_art :interval "3s"
-	"./scripts/getSongArt.sh")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongArt.sh")
 (defpoll song_artist :interval "1s"
-	"./scripts/getSongMetadata.sh artist")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongMetadata.sh artist")
 (defpoll song_title :interval "1s"
-	"./scripts/getSongMetadata.sh title")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongMetadata.sh title")
 (defpoll song_position :interval "250ms"
-	"./scripts/getSongMetadata.sh position")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongMetadata.sh position")
 (defpoll player_status :interval "1s"
-	"./scripts/getSongMetadata.sh player_status")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongMetadata.sh player_status")
 (defpoll player_status_text :interval "1s"
-	"./scripts/getSongMetadata.sh player_status_text")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getSongMetadata.sh player_status_text")
 
 ;; LOCK SCREEN VARS
 (defpoll username :interval "24h"
@@ -52,19 +52,19 @@
 
 ;; WEATHER VARS
 (defpoll weather_temp :interval "3h" :initial "0"
-	"./scripts/getWeather.sh current_temp")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh current_temp")
 (defpoll weather_temp_f :interval "3h" :initial "0"
-	"./scripts/getWeather.sh current_temp_fahrenheit")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh current_temp_fahrenheit")
 (defpoll weather_desc :interval "3h"
-	"./scripts/getWeather.sh weather_desc")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh weather_desc")
 (defpoll weather_feels_like :interval "3h"
-	"./scripts/getWeather.sh feels_like")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh feels_like")
 (defpoll weather_humidity :interval "3h"
-	"./scripts/getWeather.sh humidity")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh humidity")
 (defpoll weather_icon :interval "3h"
-	"./scripts/getWeather.sh icon")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh icon")
 (defpoll weather_hex :interval "3h"
-	"./scripts/getWeather.sh hex")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWeather.sh hex")
 
 ;; CALENDAR VARS
 (defpoll calendar_day :interval "10h"
@@ -76,25 +76,25 @@
 
 ;; UTILITY ROW VARS
 (defpoll network_status :interval "1s"
-	"./scripts/getNetwork.sh color")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getNetwork.sh color")
 (defpoll network_icon :interval "1s"
-	"./scripts/getNetwork.sh icon")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getNetwork.sh icon")
 (defpoll network_name :interval "1s"
-	"./scripts/getNetwork.sh name")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getNetwork.sh name")
 (defpoll network_name_truncated :interval "1s"
-	"./scripts/getNetwork.sh trname")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getNetwork.sh trname")
 (defpoll watt_usage :interval "3s"
-  "./scripts/getPower.sh power")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getPower.sh power")
 (defpoll power_icon :interval "1s"
-  "./scripts/getPower.sh icon")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getPower.sh icon")
 (defpoll redshift_status :interval "1s"
-	"./scripts/getRedshift.sh color")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getRedshift.sh color")
 (defpoll dnd_status :interval "1s"
-	"./scripts/dashActions.sh dndstat")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh dndstat")
 (defpoll fan1_speed :interval "1s"
-  "./scripts/getFan.sh 1")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getFan.sh 1")
 (defpoll fan2_speed :interval "1s"
-  "./scripts/getFan.sh 2")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getFan.sh 2")
 
 ;; NOTIFICATION CENTER/POPUP VARS
 (defpoll dunst_history :interval "250ms" :run-while noticenter
@@ -102,28 +102,28 @@
 (defpoll dunst_count :interval "250ms" :run-while noticenter
 	"dunstctl count history")
 (defpoll reveal_no_notification_text :interval "5m"
-	"./scripts/getNotificationCount.sh")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getNotificationCount.sh")
 
 ;; BLUETOOTH VARS
 (defpoll bluetooth_icon :interval "1s"
-	"./scripts/getBluetooth.sh icon")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBluetooth.sh icon")
 (defpoll bluetooth_status :interval "1s"
-	"./scripts/getBluetooth.sh status")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBluetooth.sh status")
 (defpoll bluetooth_supported :interval "1s"
-	"./scripts/getBluetooth.sh supported")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBluetooth.sh supported")
 
 ;; UNSORTED VARS
 (defpoll layout_icon :interval "250ms"
-	"./scripts/bspLayout.sh icon")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/bspLayout.sh icon")
 (defpoll airplane_mode_status :interval "1s"
-	"./scripts/dashActions.sh amstat")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh amstat")
 (defpoll uptime :interval "30s"
-	"./scripts/getUptime.sh")
+	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getUptime.sh")
 (defpoll perf_mode :interval "1s"
   "asusctl profile --profile-get | awk '{print $4}'")
 (defpoll perf_icon :interval "1s"
-  "./scripts/getPerfIcon.sh")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getPerfIcon.sh")
 (defpoll temp :interval "3s"
-  "./scripts/getTemp.sh temp")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh temp")
 (defpoll temp_icon :interval "3s"
-  "./scripts/getTemp.sh icon")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh icon")

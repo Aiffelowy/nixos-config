@@ -1,6 +1,6 @@
 (defwidget control-center []
 	(box :class "control-center-window" :space-evenly "false" :orientation "v"
-		(eventbox :onclick "sh ./scripts/openControlCenter.sh &"
+		(eventbox :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openControlCenter.sh &"
 			(box :class "control-center-spacer" :style {ccenter ? "padding-bottom: 0em;" : "padding-bottom: calc(43em - 1px);"})
 		)
 		(revealer :class "mp-revealer" :reveal mp :transition "crossfade" :duration "600ms"
@@ -41,8 +41,8 @@
 					)
 				)
 				(box :class "system-btn" :halign "end" :orientation "h" :space-evenly "false"
-					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/lck &" :timeout "10s" "")
-					(button :class "lock-btn" :onclick "sh $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts/openExitScreen.sh" :timeout "10s" "")
+					(button :class "exit-btn" :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/localbin/lck &" :timeout "10s" "")
+					(button :class "lock-btn" :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/openExitScreen.sh" :timeout "10s" "")
 				)
 			)
 			(box :class "first-row" :orientation "v" :space-evenly "false"
@@ -56,17 +56,17 @@
 						:tooltip "Status: ${bluetooth_status}" :disabled {bluetooth_supported == "false"}
 					)
 					(cc_button :title "Airplane Mode" :icon airplane_mode_status
-						:is_active {airplane_mode_status == ""} :onclick "sh ./scripts/dashActions.sh am"
+						:is_active {airplane_mode_status == ""} :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh am"
 						:tooltip "Status: ${airplane_mode_status == '' ? 'On' : 'Off'}" :disabled {bluetooth_supported == "false"}
 					)
 				)
 				(box :orientation "h" :style "margin-top: -1.5em;"
 					(cc_button :title "Night Light" :icon ""
-						:is_active {redshift_status == "#1c2325"} :onclick "sh ./scripts/getRedshift.sh toggle"
+						:is_active {redshift_status == "#1c2325"} :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getRedshift.sh toggle"
 						:tooltip "Status: ${redshift_status == '#1c2325' ? 'On' : 'Off'}"
 					)
 					(cc_button :title "Do Not Disturb" :icon ""
-						:is_active {dnd_status == "#1c2325"} :onclick "sh ./scripts/dashActions.sh dnd"
+						:is_active {dnd_status == "#1c2325"} :onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh dnd"
 						:tooltip "Status: ${dnd_status == '#1c2325' ? 'On' : 'Off'}"
 					)
 					(cc_button :title perf_mode :icon perf_icon

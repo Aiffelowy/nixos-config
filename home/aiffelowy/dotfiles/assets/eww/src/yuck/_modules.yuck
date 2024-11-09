@@ -55,8 +55,8 @@
 (defwidget layout []
 	(box :orientation "h"
 		(button :class "layout-btn" 
-			:onclick "sh ./scripts/bspLayout.sh set"
-			:onmiddleclick "sh ./scripts/bspLayout.sh reset"
+			:onclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/bspLayout.sh set"
+			:onmiddleclick "sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/bspLayout.sh reset"
 			{layout_icon ?: ""})
 	)
 )

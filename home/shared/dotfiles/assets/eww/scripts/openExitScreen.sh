@@ -9,14 +9,14 @@ hide_unhide_windows() {
 
 re_run() {
 	if [[ ! -f "$HOME/.cache/bar.lck" ]]; then
-		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/tglbar
+		$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/tglbar
 	fi
 	
 	${EWW_BIN} update escreen=true
 }
 
 run() {
-	$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/tglbar
+	$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/tglbar
 	${EWW_BIN} open exit-screen
 	sleep 0.2 && hide_unhide_windows; sleep 0.2 && ${EWW_BIN} update escreen=true
 
@@ -31,12 +31,12 @@ if [[ ! `pidof eww` ]]; then
 else
 	if [[ ! -f "$LOCK_FILE" ]]; then
 		touch "$LOCK_FILE"
-		$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/termeww
+		$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/termeww
     run
 	else
 		sleep 0.15 && ${EWW_BIN} update escreen=false
 		sleep 0.2 && hide_unhide_windows
-	  $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/localbin/tglbar
+	  $HOME/.config/nixos/home/shared/dotfiles/assets/localbin/tglbar
 		${EWW_BIN} close exit-screen
 		rm "$LOCK_FILE"
 	fi
