@@ -41,6 +41,13 @@
 						./hosts/Bunker/configuration.nix
 					];
 				};
+
+        Horizon = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/Horizon/configuration.nix
+          ];
+        };
 			};
 
 			homeConfigurations = {
@@ -61,6 +68,15 @@
 					];
 					extraSpecialArgs = { inherit nixpkgs-unstable; };
 				};
+
+        rico = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./home/shared/shared-home.nix
+            ./home/rico/home.nix
+          ];
+          extraSpecialArgs = { inherit nixpkgs-unstable; };
+        };
 			};
 		};
 
