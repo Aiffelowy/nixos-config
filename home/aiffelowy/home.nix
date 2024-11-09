@@ -1,13 +1,6 @@
 { config, pkgs, ... }:
 	{
-    imports = [ 
-    ./dotfiles/bspwm.nix
-    ./dotfiles/rofi.nix
-    ./dotfiles/dunst.nix
-    ./dotfiles/kitty.nix
-    ./dotfiles/picom.nix
-    ./dotfiles/sxhkd.nix
-    ];
+    imports = [ ./dotfiles/theme1.nix ];
 
 		nixpkgs.config.allowUnfree = true;
 
@@ -77,6 +70,7 @@
         gparted
         p7zip
         python312
+        devenv
 
         lua-language-server
         rust-analyzer

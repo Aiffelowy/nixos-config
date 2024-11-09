@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports =
@@ -13,7 +13,10 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "amd_pstate=active" ];
 
+  powerManagement.enable = true;
+  
   system.autoUpgrade = {
     enable = true;
     flake = "/home/aiffelowy/.config/nixos/flake.nix";
@@ -28,6 +31,8 @@
       options = "--delete-older-than 7d";
     };
     optimise.automatic = true;
+
+    settings.trusted-users = [ "root" "@wheel" ];
   };
 
 
@@ -52,6 +57,22 @@
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
+  };
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.0.0.3/24" ];
+      privateKeyFile = "/root/.wireguard/private";
+
+      peers = [
+        {
+          publicKey = "MxSYpUp0+soKnoqK0LIzKtUZ6HM9LveFe/SZR4Pl0k4=";
+          allowedIPs = [ "0.0.0.0/0" ];
+          endpoint = "89.78.86.206:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
 
   # Enable bluetooth
@@ -169,15 +190,15 @@
     };
 
     supergfxd.enable = true;
-
+    tlp.enable = true;
     blueman.enable = true;
 
     openssh = {
       enable = true;
       settings = {
         PasswordAuthentication = true;
-	AllowUsers = [ "aiffelowy" ];
-	PermitRootLogin = "no";
+        AllowUsers = [ "aiffelowy" ];
+	      PermitRootLogin = "no";
       };
     };
   };
@@ -188,6 +209,9 @@
     serviceConfig.Type = "simple";
   };
 
+  systemd.services.wg-quick-wg0.wantedBy = lib.mkForce [ ];
+  systemd.services.httpd.wantedBy = lib.mkForce [ ];
+  systemd.services.sshd.wantedBy = lib.mkForce [ ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -199,6 +223,7 @@
     php
     ntfs3g
     cifs-utils
+    wireguard-tools
   ];
 
   programs.thunar.enable = true;
@@ -220,6 +245,42 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
 
   };
+
+
+  specialisation = {
+    low-power.configuration = {
+      boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+      boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+      boot.extraModprobeConfig = ''
+        blacklist nouveau
+        options nouveau modeset=0
+      '';
+  
+      services.udev.extraRules = ''
+        # Remove NVIDIA USB xHCI Host Controller devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA USB Type-C UCSI devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA Audio devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+        # Remove NVIDIA VGA/3D controller devices
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+      '';
+      
+      services.supergfxd.enable = lib.mkForce false;
+
+      services.tlp = {
+        enable = true;
+        settings = {
+          CPU_SCALING_GOVERNOR_ON_BAT = lib.mkForce "powersave";
+          CPU_ENERGY_PERF_POLICY_ON_BAT = lib.mkForce "power";
+          CPU_MIN_PERF_ON_BAT = 0;
+          CPU_MAX_PERF_ON_BAT = 50;
+        };
+      };
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -233,11 +294,10 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  networking.firewall.enable = true;
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

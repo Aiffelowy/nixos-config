@@ -1,5 +1,5 @@
 let 
-  	homedir = "/home/aiffelowy";
+    homedir = "/home/aiffelowy";
 		localbin = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/localbin";
 		ewwscripts = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww/scripts";
 		sxhkdscripts = "${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/sxhkd";
