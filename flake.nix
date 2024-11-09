@@ -45,6 +45,7 @@
         Horizon = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            unstable-overlay
             ./hosts/Horizon/configuration.nix
           ];
         };
