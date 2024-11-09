@@ -29,6 +29,44 @@
   networking = { 
     networkmanager.enable = false;
     enableIPv6 = false;
+    
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 25565 53 8080 ];
+      allowedUDPPorts = [ 25565 53 51820 ];
+    };
+
+    nat = {
+      enable = true;
+      externalInterface = "enp57s0u1";
+      internalInterfaces = [ "wg0" ];
+    };
+
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.0.0.1/24" ];
+        listenPort = 51820;
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o enp57s0u1 -j MASQUERADE
+        '';
+
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o enp57s0u1 -j MASQUERADE
+        '';
+        
+	privateKeyFile = "/root/.wireguard/private";
+        peers = [
+          { # MagnumOpus
+            publicKey = "sri0ne2VxC5nqJFJxJ7fdNNH09l1ntOt5oNkXNqbf0Q=";
+	    allowedIPs = [ "10.0.0.3/32" ];
+          }
+          { # Phone
+            publicKey = "CTAB8T+9prGjjldlbg5OfWpkh6LFC2Xhc5C5Z8nB028=";
+	    allowedIPs = [ "10.0.0.4/32" ];
+          }
+        ];
+      };
+    };
   };
 
   # Set your time zone.
@@ -77,12 +115,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 25565 5335 8080 ];
-    allowedUDPPorts = [ 25565 5335 ];
-  };
-
   virtualisation.docker = {
     autoPrune.enable = true;
 
@@ -106,6 +138,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    wireguard-tools
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
