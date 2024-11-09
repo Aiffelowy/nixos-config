@@ -10,7 +10,7 @@
 		home = {
 			username = "rico";
 			homeDirectory = "/home/rico";
-			stateVersion = "23.11";
+			stateVersion = "24.05";
 			
       sessionVariables.GTK_THEME = "Nordic-darker";
       sessionVariables.GTK_ICON_THEME = "Nordic-darker";
