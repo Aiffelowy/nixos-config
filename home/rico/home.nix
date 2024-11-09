@@ -8,8 +8,8 @@
 		nixpkgs.config.allowUnfree = true;
 
 		home = {
-			username = "aiffelowy";
-			homeDirectory = "/home/aiffelowy";
+			username = "rico";
+			homeDirectory = "/home/rico";
 			stateVersion = "23.11";
 			
       sessionVariables.GTK_THEME = "Nordic-darker";
@@ -21,7 +21,6 @@
 				viewnior
 				xdotool
         usbutils
-				brightnessctl
 				hsetroot
 				maim
 				jq
@@ -29,7 +28,6 @@
 				xdo
 				giph
 				jgmenu
-				blueman
 				feh
 				playerctl
 				i3lock-color

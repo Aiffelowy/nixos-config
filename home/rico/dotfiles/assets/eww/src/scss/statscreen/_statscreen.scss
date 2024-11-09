@@ -1,0 +1,100 @@
+.statscreen-window {
+
+  .statscreen-spacer {
+    transition: all 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  .statscreen {
+    background-color: $darker-background;
+    border-radius: 10px;
+    font-family: "Material Icons";
+    padding: 20px;
+
+    box {
+      margin: .25em 0em;
+    }
+
+    .cpu-text, .ram-text, .disk-text, .temp-text {
+      font-family: "DM Sans";
+      font-size: 16px;
+      font-weight: bold;
+      margin-left: .25em;
+      margin-right: .75em;
+    }
+  }
+
+  .cpu-stat, .ram-stat, .disk-stat, .temp-stat {
+    margin-left: 2em;
+
+    scale {
+      marks {
+        mark {
+          indicator {
+            min-height: 8px;
+            min-width: 1px;
+          }
+        }
+      }
+      trough {
+        background-color: $background-primary;
+        border: 2px solid $lighter-background;
+        border-radius: 10px;
+        min-height: 1.25em;
+        min-width: 18em;
+        margin: 0em 1em;
+
+        highlight {
+          background-image: linear-gradient(to right, $blue-desaturated, $blue);
+          transition: inherit;
+          border-radius: inherit;
+        }
+      }
+    }
+
+    .cpu-icon, .ram-icon, .disk-icon, .temp-icon {
+      padding: .25em;
+      border-radius: 2em;
+      color: $foreground-tertiary;
+      font-size: 23px;
+    }
+    .ram-icon {
+      font-size: 16px;
+      margin: 0em .8em 0em .2em;
+    }
+  }
+  .cpu-stat scale trough highlight {
+    background-image: linear-gradient(to right, $yellow);
+  }
+  .ram-stat scale trough highlight {
+    background-image: linear-gradient(to right, $green);
+  }
+  .disk-stat scale trough highlight {
+    background-image: linear-gradient(to right, $blue);
+  }
+  .temp-stat scale trough highlight {
+    background-image: linear-gradient(to right, $red);
+  }
+
+  .watts {
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .fan-icon {
+    font-family: "Nerd Icons";
+    font-size: 16px;
+  }
+
+  .fans {
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .fan-stat {
+    margin-left: 25px;
+  }
+}
+
+

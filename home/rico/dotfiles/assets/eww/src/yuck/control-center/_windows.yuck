@@ -1,0 +1,9 @@
+(defwindow control-center
+	:geometry (geometry :x "-0.2%"
+						:y "36%" 
+						:width "14%" 
+						:height "80%"
+						:anchor "bottom right")
+	:windowtype "dock"
+	:wm-ignore false
+	(control-center))
