@@ -5,14 +5,14 @@
 		:halign "center"
 		(button :class "launcher-btn"
 				:onclick "$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/appmnu"
-				""
-		)
+				"\\uf313"
+    )
 	)
 )
 
 (defwidget workspaces []
 	(literal :content workspace :valign "center" ))
-(deflisten workspace "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh")
+(deflisten workspace "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh 1 2 3 4 5")
 
 (defwidget time []
 	(box :orientation "h"

@@ -123,7 +123,5 @@
   "asusctl profile --profile-get | awk '{print $4}'")
 (defpoll perf_icon :interval "1s"
   "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getPerfIcon.sh")
-(defpoll temp :interval "3s"
-  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh temp")
 (defpoll temp_icon :interval "3s"
-  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh icon")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh acpi")
