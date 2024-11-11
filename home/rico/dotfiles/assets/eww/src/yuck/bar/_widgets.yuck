@@ -5,14 +5,24 @@
 		:halign "center"
 		(button :class "launcher-btn"
 				:onclick "$HOME/.config/nixos/home/shared/dotfiles/assets/localbin/appmnu"
-				""
+				""
 		)
 	)
 )
 
 (defwidget workspaces []
 	(literal :content workspace :valign "center" ))
-(deflisten workspace "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh")
+(deflisten workspace "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh 3 4 5")
+
+(defwidget workspaces1 []
+	(literal :content workspace1 :valign "center" ))
+(deflisten workspace1 "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh 1 2")
+
+(defwidget workspaces2 []
+	(literal :content workspace2 :valign "center" ))
+(deflisten workspace2 "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getWorkspaces.sh 6 7")
+
+
 
 (defwidget time []
 	(box :orientation "h"
@@ -24,28 +34,6 @@
 	)
 )
 
-(defwidget battery []
-	(box :class "battery ${bat_style}"
-		:orientation "h"
-		:space-evenly "false"
-		:tooltip "Battery: ${battery_capacity}%"
-		(eventbox
-			:onclick "${EWW_CMD} update bat=${!bat}"
-			(overlay
-				(scale :class "battery-scale"
-					:min 0
-					:max 100
-					:orientation "h"
-					:value {battery_capacity}
-				)
-				(label :class { bat ? "battery-label" : "battery-icon" }
-					:text {bat ? "${battery_capacity}%" : "${power_icon}"}
-				)
-			)
-		)
-	)
-)
-(defvar bat false)
 
 (defwidget action-center []
 	(box :class "action-center"
@@ -76,7 +64,20 @@
 (defwidget top []
 	(box :class "top" :orientation "h" :space-evenly "false" :halign "start"
 		(launcher)
+		(separator :text "‏ ‏ ‏")
 		(workspaces)))
+
+(defwidget top1 []
+	(box :class "top" :orientation "h" :space-evenly "false" :halign "start"
+		(launcher)
+		(separator :text "‏ ‏ ‏")
+		(workspaces1)))
+
+(defwidget top2 []
+	(box :class "top" :orientation "h" :space-evenly "false" :halign "start"
+		(launcher)
+		(separator :text "‏ ‏ ‏")
+		(workspaces2)))
 
 ;; CENTER WIDGETS
 (defwidget center []
@@ -88,8 +89,6 @@
 	(box :orientation "h" :space-evenly "false" :halign "end"
 		(action-center)
 		(separator :text "‏ ‏ ‏")
-		(battery)
-		(separator :text "‏ ‏ ‏")
 		(layout)))
 	
 (defwidget bar []
@@ -97,3 +96,15 @@
 		(top)
 		(center)
 		(bottom)))
+
+(defwidget bar-left []
+	(box :class "eww-bar" :orientation "h" :valign "fill" :halign "fill"
+		(top1)
+		(center)
+		(bottom)))
+
+(defwidget bar-right []
+(box :class "eww-bar" :orientation "h" :valign "fill" :halign "fill"
+  (top2)
+  (center)
+  (bottom)))

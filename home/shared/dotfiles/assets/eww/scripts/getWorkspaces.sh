@@ -1,37 +1,18 @@
 #!/bin/sh
 
 workspaces() {
-	# check if Occupied
-	o1=$(bspc query -D -d .occupied --names | grep 1)
-	o2=$(bspc query -D -d .occupied --names | grep 2)
-	o3=$(bspc query -D -d .occupied --names | grep 3)
-	o4=$(bspc query -D -d .occupied --names | grep 4)
-	o5=$(bspc query -D -d .occupied --names | grep 5)
+  string="(eventbox :onscroll \"sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh '{}'\" :valign \"center\" (box	:class \"ws\" :orientation \"h\"	:halign \"center\"	:valign \"center\"	 :space-evenly \"false\" :spacing \"-5\""
+  focused_node=$(bspc query -D -d focused --names)
+  for workspace in $*; do
+    string+="(button :onclick \"bspc desktop -f $workspace\"	:class	\"a$(bspc query -D -d .occupied --names | grep $workspace)$([[ $focused_node -eq $workspace ]] && echo $workspace)\"	\"$([[ $focused_node -eq $workspace ]] && echo "◆" || echo "◇")\")"
+  done
 
-	# check if Focused
-	f1=$(bspc query -D -d focused --names | grep 1)
-	f2=$(bspc query -D -d focused --names | grep 2)
-	f3=$(bspc query -D -d focused --names | grep 3)
-	f4=$(bspc query -D -d focused --names | grep 4)
-	f5=$(bspc query -D -d focused --names | grep 5)
-
-	# le spagetti
-	content1="◇"
-	content2="◇"
-	content3="◇"
-	content4="◇"
-	content5="◇"
-	
-	[[ "$f1" ]] && content1="◆"
-	[[ "$f2" ]] && content2="◆"
-	[[ "$f3" ]] && content3="◆"
-	[[ "$f4" ]] && content4="◆"
-	[[ "$f5" ]] && content5="◆"
-
-	echo "(eventbox :onscroll \"sh $HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/dashActions.sh '{}'\" :valign \"center\" (box	:class \"ws\" :orientation \"h\"	:halign \"center\"	:valign \"center\"	 :space-evenly \"false\" :spacing \"-5\" (button :onclick \"bspc desktop -f 1\"	:class	\"a$o1$f1\"	\"$content1\") (button :onclick \"bspc desktop -f 2\"	:class \"a$o2$f2\"	 \"$content2\") (button :onclick \"bspc desktop -f 3\"	:class \"a$o3$f3\" \"$content3\") (button :onclick \"bspc desktop -f 4\"	:class \"a$o4$f4\"	\"$content4\") (button :onclick \"bspc desktop -f 5\"	:class \"a$o5$f5\" \"$content5\" )))"
+  string+="))"
+  echo $string
 }
 
-workspaces
-bspc subscribe desktop node_transfer | while read -r _ ; do
-workspaces
+
+workspaces $*
+bspc subscribe desktop node_transfer | while read -r _; do
+  workspaces $*
 done

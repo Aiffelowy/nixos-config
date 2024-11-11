@@ -27,7 +27,7 @@ in
 					"super + shift + {Up, Down, Left, Right}" = "${sxhkdscripts}/bsmove.sh {north, south, west, east}";
 					"super + c" = "bspc node -c";
 					"alt + F4" = "bspc node -k";
-					"super + {_,shift + }{1-5}" = "bspc {desktop -f, node -d} '^{1-5}'";
+					"super + {_,shift + }{1-7}" = "bspc {desktop -f, node -d} '^{1-7}'";
 					"super + {t,shift + t,space,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
 					"super + ctrl + r" = "pkill -USR1 sxhkd; notify-send \"sxhkd\" \"Restarted Simple X hotkey daemon\"";
           "XF86Launch1" = "asusctl --next-kbd-bright";

@@ -92,12 +92,12 @@
 					(label :class "brightness-icon" :text {
 						brightness <= 30 ? "" : brightness <= 60 ? "" : ""
 					})
-					(scale :min 0
+					(scale :min 15
 						:max 101
 						:value brightness
 						:orientation "h"
 						:tooltip "Brightness: ${brightness}%"
-						:onchange "brightnessctl set {}%"
+						:onchange "sh $HOME/.config/nixos/home/rico/dotfiles/assets/eww/scripts/changeBrightness.sh {}"
 					)
 					(label :class "brightness-text" :text "${brightness}%")
 				)

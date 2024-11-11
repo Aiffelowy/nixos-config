@@ -19,12 +19,8 @@
 	"[[ -f $HOME/.cache/vol-muted.lock ]] && echo 'true' || echo 'false'")
 (defpoll micro :interval "1s"
 	"amixer sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
-(defpoll brightness :interval "500ms"
-	"brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
-(defpoll battery_capacity :interval "1s" :initial 0
-	"$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBattery.sh capacity")
-(defpoll bat_style :interval "1s"
-  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getBattery.sh style")
+(defpoll brightness :interval "500ms" :timeout "1s"
+  "xrandr --verbose | grep -m 1 Brightness | awk '{ print $2*100 }'")
 
 ;; MUSIC PLAYER VARS
 (defpoll art :interval "1s"
@@ -123,7 +119,5 @@
   "asusctl profile --profile-get | awk '{print $4}'")
 (defpoll perf_icon :interval "1s"
   "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getPerfIcon.sh")
-(defpoll temp :interval "3s"
-  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh temp")
 (defpoll temp_icon :interval "3s"
-  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh icon")
+  "$HOME/.config/nixos/home/shared/dotfiles/assets/eww/scripts/getTemp.sh cannon")

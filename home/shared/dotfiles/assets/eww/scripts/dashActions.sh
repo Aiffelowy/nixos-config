@@ -2,7 +2,7 @@
 
 DATE=$(date '+%b%d-%H-%M:%S.png');
 
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 AIRPLANE_MODE_LOCK_FILE="$HOME/.cache/airplane-mode.lock"
 DND_LOCK_FILE="$HOME/.cache/dnd-lock.lock"
 JEFF_LOCK_FILE="$HOME/.cache/jeff-lock.lock"
@@ -59,7 +59,7 @@ run_am() {
 
 run_ocd() {
 	pre_run && sleep 0.2
-	xdg-open "$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+	xdg-open "$HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 }
 
 move_to_desktop() {

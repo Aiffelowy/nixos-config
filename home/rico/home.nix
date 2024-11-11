@@ -54,6 +54,7 @@
         nordic
         prismlauncher
         nerdfonts
+        material-icons
         bsp-layout
         bc
         mpv

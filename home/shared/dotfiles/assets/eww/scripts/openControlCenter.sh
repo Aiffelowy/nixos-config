@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LOCK_FILE="$HOME/.cache/eww-control-center.lock"
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 ACTIVE_PLAYERS=$(playerctl -l | head -n 1)
 
 fix_stacking_bug() {

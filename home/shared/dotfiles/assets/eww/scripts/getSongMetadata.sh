@@ -5,7 +5,7 @@ ARTIST=$(playerctl -p $PLAYERS metadata --format '{{ artist }}')
 TITLE=$(playerctl -p $PLAYERS metadata --format '{{ title }}')
 STATUS=$(playerctl -p $PLAYERS status)
 
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 
 artist() {
 	# Check if $title is "Advertisement" cause fuck Spotify.

@@ -1,12 +1,19 @@
 #!/bin/sh
 
 LOCK_FILE="$HOME/.cache/eww-notification-center.lock"
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
+
+fix_stacking_bug() {
+	for entry in $(xdotool search --pid $(pidof eww)); do
+		xdo below -a "Eww - notification-center" $entry
+	done
+}
 
 run() {
 	${EWW_BIN} open notification-center
 	sleep 0.2
-	${EWW_BIN} update noticenter=true
+  fix_stacking_bug
+	${EWW_BIN} update noticenter=true; xdo raise -a "Eww - bar"
 }
 
 # Run eww daemon if not running

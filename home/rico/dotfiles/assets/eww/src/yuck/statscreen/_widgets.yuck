@@ -40,27 +40,11 @@
         (label :class "temp-icon" :text "device_thermostat")
         (scale :min 0
           :max 101
-          :value {EWW_TEMPS["ACPITZ_TEMP1"]}
+          :value {EWW_TEMPS["CORETEMP_PACKAGE_ID_0"]}
           :orientation "h"
-          :tooltip "TEMP: ${EWW_TEMPS["ACPITZ_TEMP1"]}°C"
+          :tooltip "TEMP: ${EWW_TEMPS["CORETEMP_PACKAGE_ID_0"]}°C"
         )
-        (label :class "temp-text" :text "${EWW_TEMPS["ACPITZ_TEMP1"]}°C")
-      )
-      (box :class "misc-stat" :orientation "h" :space-evenly "false" :halign "center"
-        (box :class "watt-stat" :orientation "h" :space-evenly "false"
-          (label :class "watts-icon" :text "${power_icon}")
-          (label :class "watts" :text ": ${watt_usage}")
-        )
-        (box :class "fan-stat" :orientation "v" :space-evenly "false" :halign "center"
-          (box
-            (label :class "fan-icon" :text "\\uefa7")
-            (label :class "fans" :text ": ${fan1_speed}rpm")
-          )
-          (box
-            (label :class "fan-icon" :text "\\uefa7")
-            (label :class "fans" :text ": ${fan2_speed}rpm")
-          )
-        )
+        (label :class "temp-text" :text "${EWW_TEMPS["CORETEMP_PACKAGE_ID_0"]}°C")
       )
     )
   )

@@ -8,12 +8,14 @@ in
 		enable = true;
 		
 		monitors = {
-			eDP = [ "1" "2" "3" "4" "5" ];
+			HDMI-0 = [ "1" "2" ];
+      HDMI-1 = [ "6" "7" ];
+      DP-2 = [ "3" "4" "5" ];
 		};
 
 		settings = {
-			pointer_modifier = "Mod4";
-			window_gap = 16;
+pointer_modifier = "Mod4";
+			window_gap = 12;
 			top_padding = 0;
 			left_padding = 0;
 			right_padding = 0;
@@ -51,6 +53,7 @@ in
 		];
 
 		extraConfigEarly = ''
+      xrandr --output DP-2 --primary --mode 2560x1440 --output HDMI-0 --mode 1920x1080 --left-of DP-2 --output HDMI-1 --mode 1920x1080 --right-of DP-2 --rotate right
 			rm ${homedir}/.cache/dunst.log
 			rm ${homedir}/.cache/fake_battery_capacity
 			rm ${homedir}/.cache/eww-calendar.lock

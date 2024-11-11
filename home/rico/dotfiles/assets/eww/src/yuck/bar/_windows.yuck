@@ -9,3 +9,31 @@
 	:windowtype "dock"
 	:wm-ignore false
 	(bar))
+
+(defwindow bar-left
+  :geometry (geometry :x "0%"
+    :y "0%"
+    :height "3%"
+    :width "100%"
+    :anchor "center bottom"
+  )
+  :monitor 1
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore "false"
+  (bar-left)
+)
+
+(defwindow bar-right
+  :geometry (geometry :x "0%"
+    :y "0%"
+    :height "3%"
+    :width "100%"
+    :anchor "center bottom"
+  )
+  :monitor 2
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore "false"
+  (bar-right)
+)

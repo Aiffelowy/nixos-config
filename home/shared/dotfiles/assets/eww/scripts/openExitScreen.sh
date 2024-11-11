@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LOCK_FILE="$HOME/.cache/eww-escreen.lock"
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 
 hide_unhide_windows() {
 	while bspc node any.hidden.window -g hidden=off; do false; done && while bspc node 'any.!hidden.window' -g hidden=on; do :; done

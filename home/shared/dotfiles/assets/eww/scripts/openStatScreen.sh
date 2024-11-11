@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LOCK_FILE="$HOME/.cache/eww-statscreen.lock"
-EWW_BIN="eww --config $HOME/.config/nixos/home/aiffelowy/dotfiles/assets/eww"
+EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 
 fix_stacking_bug() {
 	for entry in $(xdotool search --pid $(pidof eww)); do
