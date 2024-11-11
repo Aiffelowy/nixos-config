@@ -49,6 +49,8 @@ pointer_modifier = "Mod4";
 			"exec mpDris2"
 			"xdo lower -a \"Eww - bar\""
 			"eww --config ${homedir}/.config/nixos/home/rico/dotfiles/assets/eww open bar"
+			"eww --config ${homedir}/.config/nixos/home/rico/dotfiles/assets/eww open bar-left"
+			"eww --config ${homedir}/.config/nixos/home/rico/dotfiles/assets/eww open bar-right"
 
 		];
 

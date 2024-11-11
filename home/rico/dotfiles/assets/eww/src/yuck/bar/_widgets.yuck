@@ -91,6 +91,11 @@
 		(separator :text "‏ ‏ ‏")
 		(layout)))
 	
+(defwidget bottom1 []
+	(box :orientation "h" :space-evenly "false" :halign "end"
+		(separator :text "‏ ‏ ‏")
+		(layout)))
+
 (defwidget bar []
 	(box :class "eww-bar" :orientation "h" :valign "fill" :halign "fill"
 		(top)
@@ -101,10 +106,10 @@
 	(box :class "eww-bar" :orientation "h" :valign "fill" :halign "fill"
 		(top1)
 		(center)
-		(bottom)))
+		(bottom1)))
 
 (defwidget bar-right []
 (box :class "eww-bar" :orientation "h" :valign "fill" :halign "fill"
   (top2)
   (center)
-  (bottom)))
+  (bottom1)))
