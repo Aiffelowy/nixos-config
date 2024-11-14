@@ -183,14 +183,32 @@
     package = pkgs.unstable.neovim-unwrapped;
   };
 
-  fileSystems."/home/rico/disks/diskstation" = {
-    device = "//192.168.1.145/worek";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  fileSystems = {
+    "/home/rico/disks/windows" = {
+      device = "/dev/disk/by-uuid/9A62E4BD62E49F6F";
+      fsType = "ntfs";
+      options = [ "users" "nofail" ];
+    };
 
+    "/home/rico/disks/bigboy" = {
+      device = "/dev/disk/by-uuid/f567c73d-0ee7-454d-ad2b-d1b09fbeb364";
+      fsType = "ext4";
+      options = [ "users" "nofail" ];
+    };
+
+    "/home/rico/disks/chonky" = {
+      device = "/dev/disk/by-uuid/78BA3D23BA3CDEF6";
+      fsType = "ntfs";
+      options = [ "users" "nofail" ];
+    };
+
+    "/home/rico/disks/diskstation" = {
+      device = "//192.168.1.145/worek";
+      fsType = "cifs";
+      options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

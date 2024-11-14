@@ -19,8 +19,7 @@
 	"[[ -f $HOME/.cache/vol-muted.lock ]] && echo 'true' || echo 'false'")
 (defpoll micro :interval "1s"
 	"amixer sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
-(defpoll brightness :interval "500ms" :timeout "1s"
-  "xrandr --verbose | grep -m 1 Brightness | awk '{ print $2*100 }'")
+(defvar brightness 100)
 
 ;; MUSIC PLAYER VARS
 (defpoll art :interval "1s"

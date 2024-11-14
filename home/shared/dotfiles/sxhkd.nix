@@ -21,7 +21,7 @@ in
 					"XF86Audio{Raise,Lower}Volume" = "${localbin}/chng-volume {+,-}";
 					"XF86AudioMute" = "${sxhkdscripts}/audioToggle.sh";
 					"XF86MonBrightness{Up,Down}" = "${localbin}/chng-brightness {+,-}";
-					"super + shift + s" = "maim -us \"${homedir}/.ss.png\"; ${localbin}/viewscr ${homedir}/.ss.png";
+					"super + shift + s" = "maim -us ${homedir}/.ss.png; ${localbin}/viewscr ${homedir}/.ss.png";
 					"super + {_,shift +}Tab" = "bspc node -f {prev,next}.local.!hidden.window";
 					"super + {Up, Down, Left, Right}" = "${sxhkdscripts}/bselect.sh {north, south, west, east}";
 					"super + shift + {Up, Down, Left, Right}" = "${sxhkdscripts}/bsmove.sh {north, south, west, east}";

@@ -20,7 +20,7 @@
 				fade = false;
 				fadeSteps = [ 0.06 0.06 ];
 				fadeDelta = 10;
-				inactiveOpacity = 0.92;
+				inactiveOpacity = 1.0;
 				activeOpacity = 1.0;
 				vSync = true;
 				wintypes = {

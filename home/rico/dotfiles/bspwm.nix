@@ -36,6 +36,12 @@ pointer_modifier = "Mod4";
       ".blueman-manager-wrapped" = {
         state = "floating";
       };
+      "discord" = {
+        desktop = "^6";
+      };
+      "steam" = {
+        desktop = "^6";
+      };
 		};
 		
 		startupPrograms = [

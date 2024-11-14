@@ -4,7 +4,7 @@
 _notify() {
 	local icon
 	if [[ -z "$3" ]]; then
-		icon="$HOME/.config/nixos/home/aiffelowy/dotfiles/assets/dunst/assets/notification/scrot.png"
+		icon="$HOME/.config/nixos/home/shared/dotfiles/assets/dunst/assets/notification/scrot.png"
 	else
 		icon="$3"
 	fi
