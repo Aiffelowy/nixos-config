@@ -1,7 +1,7 @@
 (defwindow statscreen
   :geometry (geometry :x "-0.2%"
             :y "35.7%"
-            :width "15%"
+            :width "5%"
             :height "25%"
             :anchor "bottom right")
   :windowtype "dock"

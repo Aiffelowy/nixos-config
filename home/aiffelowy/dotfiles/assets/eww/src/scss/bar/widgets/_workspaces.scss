@@ -1,29 +1,35 @@
 .ws {
-	font-size: 1.1em;
+	font-size: 1.4em;
 	font-family: "Sarasa Mono CL Nerd Font";
-	margin: .5em .5em .5em;
-	padding: .25em .5em;
+	margin: .3em .3em .3em .3em;
+	padding: 0 .5em;
 	border-radius: 10px;
 	// border: 2px solid $lighter-background;
 	// background-color: $background-secondary;
 
-	.a, .a1, .a2, .a3, .a4, .a5, .a6,
-	.a11, .a22, .a33, .a44, .a55, .a66 {
-		margin: .5em;
-	}
+  button {
+    margin: .5em .7em;
+    color: $darker-background;
+    text-shadow: 1px 1px 0px lighten(#32393b, 5), -1px 1px 0px lighten(#32393b, 5), 1px -1px 0px lighten(#32393b, 5), -1px -1px 0px lighten(#32393b, 5), 0px 1px 0px lighten(#32393b, 5), 1px 0px 0px lighten(#32393b, 5), 0px -1px 0px lighten(#32393b, 5), -1px 0px 0px lighten(#32393b, 5);
+  }
 
-	/* Unoccupied */
-	.a {
-		color: lighten(#32393b, 5);
-	}
+  .occupied {
+    text-shadow: 1px 1px 0px #bfc9db, -1px 1px 0px #bfc9db, 1px -1px 0px #bfc9db, -1px -1px 0px #bfc9db, 0px 1px 0px #bfc9db, 1px 0px 0px #bfc9db, 0px -1px 0px #bfc9db, -1px 0px 0px #bfc9db;
+  }
 
-	/* Occupied */
-	.a1, .a2, .a3, .a4, .a5, .a6 {
-		color: #bfc9db;
-	}
-
-	/* Focused */
-	.a11, .a22, .a33, .a44, .a55, .a66 {
+  .focused {
 		color: #b7b8b8;
-	}
+    text-shadow: none;
+    //text-shadow: 1px 1px 0px #000, -1px 1px 0px #bfc9db, 1px -1px 0px #bfc9db, -1px -1px 0px #bfc9db, 0px 1px 0px #bfc9db, 1px 0px 0px #bfc9db, 0px -1px 0px #bfc9db, -1px 0px 0px #bfc9db;
+  }
+
+  .reversed {
+		color: #b7b8b8;
+    text-shadow: none;
+  }
+
+  .reversed.focused {
+    color: $darker-background;
+    text-shadow: 1px 1px 0px #bfc9db, -1px 1px 0px #bfc9db, 1px -1px 0px #bfc9db, -1px -1px 0px #bfc9db, 0px 1px 0px #bfc9db, 1px 0px 0px #bfc9db, 0px -1px 0px #bfc9db, -1px 0px 0px #bfc9db;
+  }
 }

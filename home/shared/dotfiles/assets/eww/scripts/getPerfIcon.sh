@@ -4,10 +4,10 @@
 MODE=$(asusctl profile --profile-get | awk '{print $4}')
 
 case "$MODE" in
-  "Quiet") echo $'\uefd8'
+  "Quiet") echo "󱑭"
   ;;
-  "Balanced") echo $'\ueaf6'
+  "Balanced") echo "󱜝"
   ;;
-  "Performance") echo $'\ue9e4'
+  "Performance") echo "󱑮" 
   ;;
 esac
