@@ -74,6 +74,7 @@
         p7zip
         python312
         devenv
+        screen
 
         lua-language-server
         rust-analyzer

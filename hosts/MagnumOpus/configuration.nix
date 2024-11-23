@@ -202,6 +202,8 @@
 	      PermitRootLogin = "no";
       };
     };
+
+    auto-epp.enable = true;
   };
 
   systemd.services.httpd.serviceConfig.ProtectHome = "read-only";
@@ -297,7 +299,7 @@
 
   networking.firewall.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [  ];
+  networking.firewall.allowedTCPPorts = [ 80 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # This value determines the NixOS release from which the default
