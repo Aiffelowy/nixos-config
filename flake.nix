@@ -42,20 +42,28 @@
 					];
 				};
 
-        Horizon = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            unstable-overlay
-            ./hosts/Horizon/configuration.nix
-          ];
-        };
+				Horizon = nixpkgs.lib.nixosSystem {
+					inherit system;
+					modules = [
+						unstable-overlay
+						./hosts/Horizon/configuration.nix
+					];
+				};
+
+				Calamity = nixpkgs.lib.nixosSystem {
+					inherit system;
+					modules = [
+						unstable-overlay
+						./hosts/Calamity/configuration.nix
+					];
+				};
 			};
 
 			homeConfigurations = {
 				aiffelowy = home-manager.lib.homeManagerConfiguration {
 					pkgs = nixpkgs.legacyPackages.${system};
 					modules = [ 
-            unstable-overlay
+            					unstable-overlay
 						./home/shared/shared-home.nix
 						./home/aiffelowy/home.nix
 					];
@@ -71,14 +79,23 @@
 					extraSpecialArgs = { inherit nixpkgs-unstable; };
 				};
 
-        rico = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          modules = [
-            ./home/shared/shared-home.nix
-            ./home/rico/home.nix
-          ];
-          extraSpecialArgs = { inherit nixpkgs-unstable; };
-        };
+				rico = home-manager.lib.homeManagerConfiguration {
+					pkgs = nixpkgs.legacyPackages.${system};
+					modules = [
+						./home/shared/shared-home.nix
+						./home/rico/home.nix
+				  	];
+				  	extraSpecialArgs = { inherit nixpkgs-unstable; };
+				};
+
+				mina = home-manager.lib.homeManagerConfiguration {
+					pkgs = nixpkgs.legacyPackages.${system};
+					modules = [
+						./home/shared/shared-home.nix
+						./home/mina/home.nix
+				  	];
+				  	extraSpecialArgs = { inherit nixpkgs-unstable; };
+				};
 			};
 		};
 
