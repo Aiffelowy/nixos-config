@@ -9,6 +9,7 @@ in
 		
 		monitors = {
 			eDP = [ "1" "2" "3" "4" "5" ];
+      HDMI-A-0 = [ "6" "7" ];
 		};
 
 		settings = {
@@ -47,6 +48,7 @@ in
 			"exec mpDris2"
 			"xdo lower -a \"Eww - bar\""
 			"eww --config ${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww open bar"
+			"eww --config ${homedir}/.config/nixos/home/aiffelowy/dotfiles/assets/eww open bar-small"
 
 		];
 
@@ -67,6 +69,7 @@ in
 			xsetroot -cursor_name left_ptr &
 			hsetroot -fill "${wallpaper}"
 			xset m 0 0
+      xinput --map-to-output "WaveShare WS170120" "HDMI-A-0"
 		'';
 	};
 }

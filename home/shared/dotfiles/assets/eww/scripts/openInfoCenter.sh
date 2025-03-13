@@ -3,17 +3,20 @@
 LOCK_FILE="$HOME/.cache/eww-info-center.lock"
 EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 
+WINDOWS=("control-center" "notification-center" "statscreen" "info-center")
+
 fix_stacking_bug() {
-	for entry in $(xdotool search --pid $(pidof eww)); do
-		xdo below -N eww-control-panel $entry
-	done
+  xdo lower -a "Eww - bar"
+  for window in "${WINDOWS[@]}"; do
+    xdo lower -a "Eww - ${window}"
+  done
 }
 
 run() {
 	${EWW_BIN} open info-center
-	xdo raise -a "Eww - bar"
 	sleep 0.2
-	fix_stacking_bug; ${EWW_BIN} update icenter=true;
+  ${EWW_BIN} update icenter=true;
+  xdo raise -a "Eww - bar"
 }
 
 # Run eww daemon if not running
@@ -29,6 +32,6 @@ else
 		${EWW_BIN} update icenter=false
 		sleep 0.6
 		${EWW_BIN} close info-center
-		xdo lower -a "Eww - bar"
+    fix_stacking_bug
 	fi
 fi

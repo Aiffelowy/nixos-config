@@ -3,17 +3,25 @@
 LOCK_FILE="$HOME/.cache/eww-statscreen.lock"
 EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 
+WINDOWS=("control-center" "notification-center" "statscreen" "info-center")
+
 fix_stacking_bug() {
-	for entry in $(xdotool search --pid $(pidof eww)); do
-		xdo below -N eww-statscreen $entry
-	done
+#	for entry in $(xdotool search --pid $(pidof eww)); do
+#		xdo below -a "Eww - statscreen" -t $entry
+#	done
+  xdo lower -a "Eww - bar"
+  for window in "${WINDOWS[@]}"; do
+    xdo lower -a "Eww - ${window}"
+  done
+
 }
 
 run() {
 	${EWW_BIN} open statscreen
 	sleep 0.2
-	fix_stacking_bug; ${EWW_BIN} update stscrn=true; xdo raise -a "Eww - bar"
+  ${EWW_BIN} update stscrn=true
 	touch "$LOCK_FILE"
+  xdo raise -a "Eww - bar"
 }
 
 if [[ ! `pidof eww` ]]; then
@@ -27,6 +35,6 @@ else
 		${EWW_BIN} update stscrn=false
 		sleep 0.6
 		${EWW_BIN} close statscreen
-		xdo lower -a "Eww - bar"
+    fix_stacking_bug
 	fi
 fi

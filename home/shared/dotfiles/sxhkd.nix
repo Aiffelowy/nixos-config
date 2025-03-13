@@ -31,6 +31,7 @@ in
 					"super + {t,shift + t,space,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
 					"super + ctrl + r" = "pkill -USR1 sxhkd; notify-send \"sxhkd\" \"Restarted Simple X hotkey daemon\"";
           "XF86Launch1" = "asusctl --next-kbd-bright";
+          "ctrl + alt + y" = "/home/aiffelowy/builds/scripts/funny";
 				};
 			};
 

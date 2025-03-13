@@ -4,19 +4,28 @@ LOCK_FILE="$HOME/.cache/eww-control-center.lock"
 EWW_BIN="eww --config $HOME/.config/nixos/home/$USER/dotfiles/assets/eww"
 ACTIVE_PLAYERS=$(playerctl -l | head -n 1)
 
+WINDOWS=("control-center" "notification-center" "statscreen" "info-center")
+
 fix_stacking_bug() {
-	for entry in $(xdotool search --pid $(pidof eww)); do
-		xdo below -N eww-control-panel $entry
-	done
+#  for entry in $(xdotool search --class eww ); do
+#    false
+#		xdo below -a "Eww - control-center" -t $entry
+#	done
+#  xdo lower -a "Eww - control-center"
+  xdo lower -a "Eww - bar"
+  for window in "${WINDOWS[@]}"; do
+    xdo lower -a "Eww - ${window}"
+  done
 }
 
 run() {
 	${EWW_BIN} open control-center
 	sleep 0.2
-	fix_stacking_bug; ${EWW_BIN} update ccenter=true; xdo raise -a "Eww - bar"
+  ${EWW_BIN} update ccenter=true
 
 	sleep 0.8 && [[ ! -z "$ACTIVE_PLAYERS" ]] && ${EWW_BIN} update mp=true
 	touch "$LOCK_FILE"
+  xdo raise -a "Eww - bar"
 }
 
 # Run eww daemon if not running
@@ -32,6 +41,6 @@ else
 		${EWW_BIN} update ccenter=false
 		sleep 0.6
 		${EWW_BIN} close control-center
-		xdo lower -a "Eww - bar"
+    fix_stacking_bug
 	fi
 fi

@@ -32,7 +32,13 @@
     };
     optimise.automatic = true;
 
-    settings.trusted-users = [ "root" "@wheel" ];
+    settings = {
+      trusted-users = [ "root" "@wheel" ];
+      substituters = [ "https://cuda-maintainers.cachix.org" ];
+      trusted-public-keys = [
+        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      ];
+    };
   };
 
 
@@ -84,7 +90,7 @@
   # Enable audio
   hardware = {
     pulseaudio.enable = true;
-    opengl.enable = true;
+    graphics.enable = true;
 
     nvidia = {
       modesetting.enable = true;
@@ -138,6 +144,8 @@
 
   #services
   services = {
+    flatpak.enable = true;
+    pipewire.enable = false;
     httpd = {
       enable = true;
       user = "aiffelowy";
@@ -191,7 +199,7 @@
     };
 
     supergfxd.enable = true;
-    tlp.enable = true;
+    tlp.enable = true; 
     blueman.enable = true;
 
     openssh = {
@@ -206,6 +214,12 @@
     auto-epp.enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
+  };
+
   systemd.services.httpd.serviceConfig.ProtectHome = "read-only";
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
@@ -215,6 +229,8 @@
   systemd.services.wg-quick-wg0.wantedBy = lib.mkForce [ ];
   systemd.services.httpd.wantedBy = lib.mkForce [ ];
   systemd.services.sshd.wantedBy = lib.mkForce [ ];
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -231,6 +247,7 @@
 
   programs.thunar.enable = true;
   programs.steam.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -297,10 +314,10 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 443 42069 8080 ];
+  networking.firewall.allowedUDPPorts = [ 443 42069 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

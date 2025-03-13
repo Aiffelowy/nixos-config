@@ -2,7 +2,7 @@
 
 [[ -z $1 ]] && exit 1
 
-ICON="/home/aiffelowy/.config/nixos/home/aiffelowy/dotfiles/assets/dunst/assets/notification/speaker.png"
+ICON="$HOME/.config/nixos/home/shared/dotfiles/assets/dunst/assets/notification/speaker.png"
 
 amixer -q set Master 5%"${1}"
 
@@ -12,6 +12,7 @@ VOL_BAR=
 
 for ((i = 1; i <= 10; i++)); do
   SYMBOL="█"
+  echo $VOL
   [[ $(($i*10)) -gt $VOL ]] && SYMBOL="_"
   VOL_BAR="${VOL_BAR}${SYMBOL}"
 done

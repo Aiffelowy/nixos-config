@@ -20,7 +20,6 @@
 				neofetch
 				viewnior
 				xdotool
-        usbutils
 				brightnessctl
 				hsetroot
 				maim
@@ -48,7 +47,7 @@
 				file
 				xprintidle
 				unzip
-				clang-tools
+				unstable.clang-tools
 				gnumake
 				libcanberra-gtk3
 				krita
@@ -75,13 +74,19 @@
         python312
         devenv
         screen
+        alsa-utils
+        usbutils
+        blender
+
+        unstable.unityhub
+        godot_4
 
         lua-language-server
         rust-analyzer
         gopls
         delve
-        nodePackages_latest.vscode-css-languageserver-bin
-        nodePackages_latest.vscode-html-languageserver-bin
+        vscode-langservers-extracted
+        nil
         nodePackages_latest.typescript-language-server
         pyright
 			];

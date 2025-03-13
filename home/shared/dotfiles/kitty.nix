@@ -44,6 +44,8 @@
 					bold_italic_font =  "Sarasa Mono CL Nerd Font";
 
 					font_size = 14;
+
+          auto_bell = false;
 				};
 				
 			};

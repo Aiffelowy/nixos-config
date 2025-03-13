@@ -3,7 +3,7 @@
 
 [[ -z $1 ]] && exit 1
 
-ICON="/home/aiffelowy/.config/nixos/home/aiffelowy/dotfiles/assets/dunst/assets/notification/speaker.png"
+ICON="$HOME/.config/nixos/home/shared/dotfiles/assets/dunst/assets/notification/speaker.png"
 
 brightnessctl set 5%"${1}"
 
